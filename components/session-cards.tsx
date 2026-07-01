@@ -23,7 +23,7 @@ export function SessionCards() {
       {sessionPosts.map((post) => (
         <Dialog key={post.href}>
           <article className="flex min-h-full flex-col overflow-hidden rounded-4xl border bg-card shadow-sm">
-            <div className="relative aspect-[16/9] bg-muted">
+            <div className="relative aspect-video bg-muted">
               <Image
                 src={post.image}
                 alt={`${post.title} photo`}
@@ -77,12 +77,12 @@ export function SessionCards() {
                 {post.author} · {post.location} · {post.date}
               </DialogDescription>
             </DialogHeader>
-            <div className="relative aspect-[16/9] overflow-hidden rounded-3xl bg-muted">
+            <div className="relative aspect-video overflow-hidden rounded-3xl bg-muted">
               <Image
                 src={post.image}
                 alt={`${post.title} photo`}
                 fill
-                sizes="(max-width: 768px) 100vw, 672px"
+                sizes="(max-width: 750px) 100vw, 672px"
                 className="object-cover"
               />
             </div>
