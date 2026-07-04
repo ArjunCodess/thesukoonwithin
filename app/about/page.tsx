@@ -3,6 +3,7 @@ import Image from "next/image"
 import Link from "next/link"
 
 import { buttonVariants } from "@/components/ui/button"
+import { Card, CardContent } from "@/components/ui/card"
 import { founder, missionCards } from "@/lib/site-data"
 import { cn } from "@/lib/utils"
 
@@ -16,7 +17,7 @@ export default function AboutPage() {
   return (
     <div className="bg-background">
       <section className="mx-auto grid max-w-7xl gap-10 px-4 py-12 sm:px-6 md:grid-cols-[0.9fr_1.1fr] md:items-center md:py-16 lg:px-8">
-        <div className="overflow-hidden rounded-4xl border bg-card p-3 shadow-sm">
+        <Card className="overflow-hidden rounded-4xl p-3">
           <Image
             src={founder.image}
             alt="Soumili Das, founder of The Sukoon Within"
@@ -25,7 +26,7 @@ export default function AboutPage() {
             priority
             className="aspect-[4/5] w-full rounded-3xl object-cover"
           />
-        </div>
+        </Card>
         <div className="flex flex-col gap-6">
           <div className="flex flex-col gap-4">
             <p className="text-sm font-medium text-primary">About us</p>
@@ -38,44 +39,50 @@ export default function AboutPage() {
               non-judgemental sessions where young people can feel heard.
             </p>
           </div>
-          <div className="rounded-4xl border bg-muted/40 p-6">
-            <p className="text-sm text-muted-foreground">Founder</p>
-            <h2 className="mt-2 text-2xl font-semibold">{founder.name}</h2>
-            <p className="mt-3 leading-7 text-muted-foreground">
-              Soumili started The Sukoon Within in August 2025 with a clear
-              belief: small, serious efforts can reduce stigma and make mental
-              health conversations easier to begin.
-            </p>
-          </div>
+          <Card className="rounded-4xl bg-muted/40 p-6">
+            <CardContent className="p-0">
+              <p className="text-sm text-muted-foreground">Founder</p>
+              <h2 className="mt-2 text-2xl font-semibold">{founder.name}</h2>
+              <p className="mt-3 leading-7 text-muted-foreground">
+                Soumili started The Sukoon Within in August 2025 with a clear
+                belief: small, serious efforts can reduce stigma and make mental
+                health conversations easier to begin.
+              </p>
+            </CardContent>
+          </Card>
         </div>
       </section>
 
       <section className="border-y bg-muted/30">
         <div className="mx-auto grid max-w-7xl gap-6 px-4 py-12 sm:px-6 md:grid-cols-2 lg:px-8">
-          <article className="rounded-4xl border bg-background p-6">
-            <p className="text-sm font-medium text-primary">Our vision</p>
-            <h2 className="mt-3 font-heading text-3xl leading-tight font-semibold">
-              Mental health as a school subject.
-            </h2>
-            <p className="mt-4 leading-7 text-muted-foreground">
-              The vision is for mental health to become an important subject in
-              every school in India, local and private alike. Children spend so
-              much of their lives in school, and emotional education should meet
-              them there.
-            </p>
-          </article>
-          <article className="rounded-4xl border bg-background p-6">
-            <p className="text-sm font-medium text-primary">Our mission</p>
-            <h2 className="mt-3 font-heading text-3xl leading-tight font-semibold">
-              Build a network that teaches forward.
-            </h2>
-            <p className="mt-4 leading-7 text-muted-foreground">
-              The mission is to connect young people around the world who are
-              serious about mental health, equip them with tools and frameworks,
-              and help them bring mental health education back to their own
-              communities.
-            </p>
-          </article>
+          <Card className="rounded-4xl bg-background p-6">
+            <CardContent className="p-0">
+              <p className="text-sm font-medium text-primary">Our vision</p>
+              <h2 className="mt-3 font-heading text-3xl leading-tight font-semibold">
+                Mental health as a school subject.
+              </h2>
+              <p className="mt-4 leading-7 text-muted-foreground">
+                The vision is for mental health to become an important subject
+                in every school in India, local and private alike. Children
+                spend so much of their lives in school, and emotional education
+                should meet them there.
+              </p>
+            </CardContent>
+          </Card>
+          <Card className="rounded-4xl bg-background p-6">
+            <CardContent className="p-0">
+              <p className="text-sm font-medium text-primary">Our mission</p>
+              <h2 className="mt-3 font-heading text-3xl leading-tight font-semibold">
+                Build a network that teaches forward.
+              </h2>
+              <p className="mt-4 leading-7 text-muted-foreground">
+                The mission is to connect young people around the world who are
+                serious about mental health, equip them with tools and
+                frameworks, and help them bring mental health education back to
+                their own communities.
+              </p>
+            </CardContent>
+          </Card>
         </div>
       </section>
 
@@ -96,15 +103,17 @@ export default function AboutPage() {
         </div>
         <div className="grid gap-4 md:grid-cols-3">
           {missionCards.map((card) => (
-            <article
+            <Card
               key={card.title}
-              className="rounded-4xl border bg-card p-6 shadow-sm"
+              className="rounded-4xl p-6"
             >
-              <h3 className="text-lg font-semibold">{card.title}</h3>
-              <p className="mt-3 leading-7 text-muted-foreground">
-                {card.body}
-              </p>
-            </article>
+              <CardContent className="p-0">
+                <h3 className="text-lg font-semibold">{card.title}</h3>
+                <p className="mt-3 leading-7 text-muted-foreground">
+                  {card.body}
+                </p>
+              </CardContent>
+            </Card>
           ))}
         </div>
       </section>

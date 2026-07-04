@@ -3,6 +3,7 @@ import { ArrowRight01Icon } from "@hugeicons/core-free-icons"
 import { HugeiconsIcon } from "@hugeicons/react"
 
 import { buttonVariants } from "@/components/ui/button"
+import { Card, CardContent } from "@/components/ui/card"
 import { joinRoles, siteLinks } from "@/lib/site-data"
 import { cn } from "@/lib/utils"
 
@@ -42,25 +43,27 @@ export default function JoinPage() {
       <section className="border-y bg-muted/30">
         <div className="mx-auto grid max-w-7xl gap-4 px-4 py-12 sm:px-6 md:grid-cols-2 lg:px-8">
           {joinRoles.map((role) => (
-            <article
+            <Card
               key={role.title}
-              className="rounded-4xl border bg-background p-6"
+              className="rounded-4xl bg-background p-6"
             >
-              <h2 className="text-2xl font-semibold">{role.title}</h2>
-              <p className="mt-3 leading-7 text-muted-foreground">
-                {role.body}
-              </p>
-              <div className="mt-6 flex flex-wrap gap-2">
-                {role.focus.map((item) => (
-                  <span
-                    key={item}
-                    className="rounded-4xl border bg-muted px-3 py-1 text-sm text-muted-foreground"
-                  >
-                    {item}
-                  </span>
-                ))}
-              </div>
-            </article>
+              <CardContent className="p-0">
+                <h2 className="text-2xl font-semibold">{role.title}</h2>
+                <p className="mt-3 leading-7 text-muted-foreground">
+                  {role.body}
+                </p>
+                <div className="mt-6 flex flex-wrap gap-2">
+                  {role.focus.map((item) => (
+                    <span
+                      key={item}
+                      className="rounded-4xl border bg-muted px-3 py-1 text-sm text-muted-foreground"
+                    >
+                      {item}
+                    </span>
+                  ))}
+                </div>
+              </CardContent>
+            </Card>
           ))}
         </div>
       </section>

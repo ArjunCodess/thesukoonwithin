@@ -4,6 +4,7 @@ import { ArrowRight01Icon } from "@hugeicons/core-free-icons"
 import { HugeiconsIcon } from "@hugeicons/react"
 
 import { buttonVariants } from "@/components/ui/button"
+import { Card, CardContent } from "@/components/ui/card"
 import {
   impactStats,
   missionCards,
@@ -42,7 +43,7 @@ export default function Page() {
             </a>
           </div>
         </div>
-        <div className="overflow-hidden rounded-4xl border bg-card p-3 shadow-sm">
+        <Card className="overflow-hidden rounded-4xl p-3">
           <Image
             src="/logo.jpg"
             alt="The Sukoon Within identity"
@@ -51,22 +52,22 @@ export default function Page() {
             priority
             className="aspect-[4/3] w-full rounded-3xl object-cover"
           />
-        </div>
+        </Card>
       </section>
 
       <section className="border-y bg-muted/30">
         <div className="mx-auto grid max-w-7xl gap-4 px-4 py-8 sm:px-6 md:grid-cols-4 lg:px-8">
           {impactStats.map((stat) => (
-            <div
+            <Card
               key={stat.label}
-              className="flex flex-col gap-2 rounded-3xl bg-background p-5 ring-1 ring-border"
+              className="gap-2 rounded-3xl bg-background p-5"
             >
               <p className="font-mono text-2xl font-semibold">{stat.value}</p>
               <p className="text-sm font-medium">{stat.label}</p>
               <p className="text-sm leading-6 text-muted-foreground">
                 {stat.detail}
               </p>
-            </div>
+            </Card>
           ))}
         </div>
       </section>
@@ -110,18 +111,20 @@ export default function Page() {
         </div>
         <div className="grid gap-4 md:grid-cols-[1.2fr_0.8fr]">
           {missionCards.map((card, index) => (
-            <article
+            <Card
               key={card.title}
               className={cn(
-                "rounded-4xl border bg-card p-6 shadow-sm",
+                "rounded-4xl p-6",
                 index === 2 ? "md:col-span-2" : ""
               )}
             >
-              <h3 className="text-lg font-semibold">{card.title}</h3>
-              <p className="mt-3 leading-7 text-muted-foreground">
-                {card.body}
-              </p>
-            </article>
+              <CardContent className="p-0">
+                <h3 className="text-lg font-semibold">{card.title}</h3>
+                <p className="mt-3 leading-7 text-muted-foreground">
+                  {card.body}
+                </p>
+              </CardContent>
+            </Card>
           ))}
         </div>
       </section>
@@ -136,18 +139,20 @@ export default function Page() {
           </div>
           <div className="grid gap-4 md:grid-cols-2">
             {workHighlights.slice(0, 4).map((item) => (
-              <article
+              <Card
                 key={item.title}
-                className="rounded-4xl border bg-background p-6"
+                className="rounded-4xl bg-background p-6"
               >
-                <p className="text-sm font-medium text-muted-foreground">
-                  {item.meta}
-                </p>
-                <h3 className="mt-3 text-xl font-semibold">{item.title}</h3>
-                <p className="mt-3 leading-7 text-muted-foreground">
-                  {item.body}
-                </p>
-              </article>
+                <CardContent className="p-0">
+                  <p className="text-sm font-medium text-muted-foreground">
+                    {item.meta}
+                  </p>
+                  <h3 className="mt-3 text-xl font-semibold">{item.title}</h3>
+                  <p className="mt-3 leading-7 text-muted-foreground">
+                    {item.body}
+                  </p>
+                </CardContent>
+              </Card>
             ))}
           </div>
           <Link

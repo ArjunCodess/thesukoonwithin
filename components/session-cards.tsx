@@ -5,6 +5,7 @@ import { ArrowRight01Icon } from "@hugeicons/core-free-icons"
 import { HugeiconsIcon } from "@hugeicons/react"
 
 import { Button, buttonVariants } from "@/components/ui/button"
+import { Card, CardContent } from "@/components/ui/card"
 import {
   Dialog,
   DialogContent,
@@ -22,7 +23,7 @@ export function SessionCards() {
     <div className="grid gap-5 md:grid-cols-2">
       {sessionPosts.map((post) => (
         <Dialog key={post.href}>
-          <article className="group flex min-h-full flex-col overflow-hidden rounded-3xl border bg-card shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md">
+          <Card className="group flex min-h-full flex-col gap-0 overflow-hidden rounded-3xl p-0 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md">
             <div className="relative aspect-[4/3] max-h-72 shrink-0 overflow-hidden bg-muted sm:aspect-video">
               <Image
                 src={post.image}
@@ -32,7 +33,7 @@ export function SessionCards() {
                 className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
               />
             </div>
-            <div className="flex min-h-0 flex-1 flex-col gap-5 p-5 sm:p-6">
+            <CardContent className="flex min-h-0 flex-1 flex-col gap-5 p-5 sm:p-6">
               <div className="flex min-h-0 flex-1 flex-col gap-2">
                 <p className="text-sm font-medium text-muted-foreground">
                   {post.location} - {post.date}
@@ -68,8 +69,8 @@ export function SessionCards() {
                   />
                 </a>
               </div>
-            </div>
-          </article>
+            </CardContent>
+          </Card>
           <DialogContent className="max-h-[min(760px,calc(100svh-2rem))] overflow-y-auto sm:max-w-2xl">
             <DialogHeader>
               <DialogTitle className="pr-10 text-2xl leading-tight">

@@ -5,6 +5,7 @@ import { HugeiconsIcon } from "@hugeicons/react"
 
 import { SessionCards } from "@/components/session-cards"
 import { buttonVariants } from "@/components/ui/button"
+import { Card } from "@/components/ui/card"
 import { impactStats, siteLinks } from "@/lib/site-data"
 import { cn } from "@/lib/utils"
 
@@ -43,13 +44,16 @@ export default function WorkPage() {
       <section className="border-y bg-muted/30">
         <div className="mx-auto grid max-w-7xl gap-4 px-4 py-8 sm:px-6 md:grid-cols-4 lg:px-8">
           {impactStats.map((stat) => (
-            <div key={stat.label} className="rounded-3xl bg-background p-5 ring-1 ring-border">
+            <Card
+              key={stat.label}
+              className="rounded-3xl bg-background p-5"
+            >
               <p className="font-mono text-3xl font-semibold">{stat.value}</p>
               <p className="mt-2 text-sm font-medium">{stat.label}</p>
               <p className="mt-2 text-sm leading-6 text-muted-foreground">
                 {stat.detail}
               </p>
-            </div>
+            </Card>
           ))}
         </div>
       </section>

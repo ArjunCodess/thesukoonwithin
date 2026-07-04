@@ -3,6 +3,7 @@ import { ArrowRight01Icon } from "@hugeicons/core-free-icons"
 import { HugeiconsIcon } from "@hugeicons/react"
 
 import { buttonVariants } from "@/components/ui/button"
+import { Card, CardContent } from "@/components/ui/card"
 import { siteLinks, socialLinks } from "@/lib/site-data"
 import { cn } from "@/lib/utils"
 
@@ -43,19 +44,25 @@ export default function ConnectPage() {
               href={item.href}
               target={item.href.startsWith("mailto:") ? undefined : "_blank"}
               rel={item.href.startsWith("mailto:") ? undefined : "noreferrer"}
-              className="group rounded-4xl border bg-background p-6 shadow-sm transition-colors hover:bg-muted/40"
+              className="group"
             >
-              <div className="flex items-center justify-between gap-4">
-                <div className="flex size-11 items-center justify-center rounded-full border bg-muted">
-                  <HugeiconsIcon icon={item.icon} />
-                </div>
-                <HugeiconsIcon
-                  icon={ArrowRight01Icon}
-                  className="text-muted-foreground transition-transform group-hover:translate-x-1"
-                />
-              </div>
-              <h2 className="mt-6 text-2xl font-semibold">{item.label}</h2>
-              <p className="mt-3 leading-7 text-muted-foreground">{item.body}</p>
+              <Card className="h-full rounded-4xl bg-background p-6 transition-colors group-hover:bg-muted/40">
+                <CardContent className="p-0">
+                  <div className="flex items-center justify-between gap-4">
+                    <div className="flex size-11 items-center justify-center rounded-full border bg-muted">
+                      <HugeiconsIcon icon={item.icon} />
+                    </div>
+                    <HugeiconsIcon
+                      icon={ArrowRight01Icon}
+                      className="text-muted-foreground transition-transform group-hover:translate-x-1"
+                    />
+                  </div>
+                  <h2 className="mt-6 text-2xl font-semibold">{item.label}</h2>
+                  <p className="mt-3 leading-7 text-muted-foreground">
+                    {item.body}
+                  </p>
+                </CardContent>
+              </Card>
             </a>
           ))}
         </div>
@@ -75,9 +82,13 @@ export default function ConnectPage() {
             "Whether you need an online or offline session",
             "Your preferred city, date range, and contact person",
           ].map((item) => (
-            <div key={item} className="rounded-3xl border bg-card p-5">
-              <p className="text-pretty leading-7 text-muted-foreground">{item}</p>
-            </div>
+            <Card key={item} className="rounded-3xl p-5">
+              <CardContent className="p-0">
+                <p className="text-pretty leading-7 text-muted-foreground">
+                  {item}
+                </p>
+              </CardContent>
+            </Card>
           ))}
         </div>
       </section>
