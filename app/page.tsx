@@ -60,7 +60,7 @@ export default function Page() {
           {impactStats.map((stat) => (
             <Card
               key={stat.label}
-              className="gap-2 rounded-3xl bg-background p-5"
+              className="gap-2 rounded-3xl p-5"
             >
               <p className="font-mono text-2xl font-semibold">{stat.value}</p>
               <p className="text-sm font-medium">{stat.label}</p>
@@ -141,7 +141,7 @@ export default function Page() {
             {workHighlights.slice(0, 4).map((item) => (
               <Card
                 key={item.title}
-                className="rounded-4xl bg-background p-6"
+                className="rounded-4xl p-6"
               >
                 <CardContent className="p-0">
                   <p className="text-sm font-medium text-muted-foreground">

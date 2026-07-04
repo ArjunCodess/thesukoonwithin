@@ -46,7 +46,7 @@ export default function ConnectPage() {
               rel={item.href.startsWith("mailto:") ? undefined : "noreferrer"}
               className="group"
             >
-              <Card className="h-full rounded-4xl bg-background p-6 transition-colors group-hover:bg-muted/40">
+              <Card className="h-full rounded-4xl p-6 transition-colors group-hover:bg-muted/40">
                 <CardContent className="p-0">
                   <div className="flex items-center justify-between gap-4">
                     <div className="flex size-11 items-center justify-center rounded-full border bg-muted">

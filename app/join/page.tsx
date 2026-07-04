@@ -45,7 +45,7 @@ export default function JoinPage() {
           {joinRoles.map((role) => (
             <Card
               key={role.title}
-              className="rounded-4xl bg-background p-6"
+              className="rounded-4xl p-6"
             >
               <CardContent className="p-0">
                 <h2 className="text-2xl font-semibold">{role.title}</h2>

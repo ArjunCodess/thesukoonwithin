@@ -55,7 +55,7 @@ export default function AboutPage() {
 
       <section className="border-y bg-muted/30">
         <div className="mx-auto grid max-w-7xl gap-6 px-4 py-12 sm:px-6 md:grid-cols-2 lg:px-8">
-          <Card className="rounded-4xl bg-background p-6">
+          <Card className="rounded-4xl p-6">
             <CardContent className="p-0">
               <p className="text-sm font-medium text-primary">Our vision</p>
               <h2 className="mt-3 font-heading text-3xl leading-tight font-semibold">
@@ -69,7 +69,7 @@ export default function AboutPage() {
               </p>
             </CardContent>
           </Card>
-          <Card className="rounded-4xl bg-background p-6">
+          <Card className="rounded-4xl p-6">
             <CardContent className="p-0">
               <p className="text-sm font-medium text-primary">Our mission</p>
               <h2 className="mt-3 font-heading text-3xl leading-tight font-semibold">
