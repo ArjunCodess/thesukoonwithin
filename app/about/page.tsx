@@ -1,10 +1,19 @@
 import type { Metadata } from "next"
 import Image from "next/image"
 import Link from "next/link"
+import { Linkedin01Icon } from "@hugeicons/core-free-icons"
+import { HugeiconsIcon } from "@hugeicons/react"
 
+import { Badge } from "@/components/ui/badge"
 import { buttonVariants } from "@/components/ui/button"
-import { Card, CardContent } from "@/components/ui/card"
-import { founder, missionCards } from "@/lib/site-data"
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card"
+import { missionCards, teamMembers } from "@/lib/site-data"
 import { cn } from "@/lib/utils"
 
 export const metadata: Metadata = {
@@ -16,40 +25,17 @@ export const metadata: Metadata = {
 export default function AboutPage() {
   return (
     <div className="bg-background">
-      <section className="mx-auto grid max-w-7xl gap-10 px-4 py-12 sm:px-6 md:grid-cols-[0.9fr_1.1fr] md:items-center md:py-16 lg:px-8">
-        <Card className="overflow-hidden rounded-4xl p-3">
-          <Image
-            src={founder.image}
-            alt="Soumili Das, founder of The Sukoon Within"
-            width={800}
-            height={800}
-            priority
-            className="aspect-[4/5] w-full rounded-3xl object-cover"
-          />
-        </Card>
-        <div className="flex flex-col gap-6">
-          <div className="flex flex-col gap-4">
-            <p className="text-sm font-medium text-primary">About us</p>
-            <h1 className="font-heading text-4xl leading-tight font-semibold tracking-normal sm:text-5xl">
-              Mental health education belongs to every child.
-            </h1>
-            <p className="max-w-2xl text-base leading-7 text-muted-foreground sm:text-lg">
-              The Sukoon Within is a youth-led mental health organization built
-              for Gen Z. It creates real actions, meaningful content, and calm,
-              non-judgemental sessions where young people can feel heard.
-            </p>
-          </div>
-          <Card className="rounded-4xl bg-muted/40 p-6">
-            <CardContent className="p-0">
-              <p className="text-sm text-muted-foreground">Founder</p>
-              <h2 className="mt-2 text-2xl font-semibold">{founder.name}</h2>
-              <p className="mt-3 leading-7 text-muted-foreground">
-                Soumili started The Sukoon Within in August 2025 with a clear
-                belief: small, serious efforts can reduce stigma and make mental
-                health conversations easier to begin.
-              </p>
-            </CardContent>
-          </Card>
+      <section className="mx-auto flex max-w-7xl flex-col gap-5 px-4 py-14 sm:px-6 md:py-18 lg:px-8">
+        <div className="flex max-w-4xl flex-col gap-5">
+          <p className="text-sm font-medium text-primary">About us</p>
+          <h1 className="max-w-4xl font-heading text-4xl leading-tight font-semibold tracking-normal sm:text-5xl">
+            Mental health education belongs to every child.
+          </h1>
+          <p className="max-w-3xl text-base leading-7 text-muted-foreground sm:text-lg">
+            The Sukoon Within is a youth-led mental health organization built
+            for Gen Z. It creates real actions, meaningful content, and calm,
+            non-judgemental sessions where young people can feel heard.
+          </p>
         </div>
       </section>
 
@@ -83,6 +69,90 @@ export default function AboutPage() {
               </p>
             </CardContent>
           </Card>
+        </div>
+      </section>
+
+      <section className="border-y bg-muted/30">
+        <div className="mx-auto flex max-w-5xl flex-col gap-10 px-4 py-14 sm:px-6 lg:px-8">
+          <div className="mx-auto flex max-w-3xl flex-col items-center gap-4 text-center">
+            <p className="text-sm font-medium tracking-[0.28em] text-primary uppercase">
+              Our team
+            </p>
+            <h2 className="font-heading text-4xl leading-tight font-semibold sm:text-5xl">
+              Meet the team behind the movement.
+            </h2>
+            <p className="max-w-2xl text-base leading-7 text-muted-foreground sm:text-lg">
+              A youth-led circle of ambassadors, students, and organizers
+              helping mental health education reach more communities.
+            </p>
+          </div>
+
+          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {teamMembers.map((member, index) => (
+              <Card
+                key={member.href}
+                className="h-full gap-0 overflow-hidden rounded-4xl p-0"
+              >
+                <div className="relative aspect-square overflow-hidden bg-secondary">
+                  <Badge className="absolute top-4 left-4 z-10 tracking-[0.16em] uppercase">
+                    {member.role}
+                  </Badge>
+                  {"image" in member ? (
+                    <Image
+                      src={member.image}
+                      alt={`${member.name} portrait`}
+                      fill
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                      className="object-cover"
+                    />
+                  ) : (
+                    <div
+                      className={cn(
+                        "flex size-full items-center justify-center bg-gradient-to-br text-primary",
+                        index % 3 === 0
+                          ? "from-secondary to-accent"
+                          : index % 3 === 1
+                            ? "from-card to-secondary"
+                            : "from-accent to-card"
+                      )}
+                    >
+                      <span className="font-heading text-6xl font-semibold">
+                        {member.name
+                          .split(" ")
+                          .map((part) => part[0])
+                          .join("")
+                          .slice(0, 2)}
+                      </span>
+                    </div>
+                  )}
+                </div>
+                <CardHeader className="gap-3 p-6">
+                  <div className="flex items-start justify-between gap-3">
+                    <CardTitle className="text-2xl leading-tight">
+                      {member.name}
+                    </CardTitle>
+                    <a
+                      href={member.href}
+                      target="_blank"
+                      rel="noreferrer"
+                      aria-label={`${member.name} on LinkedIn`}
+                      className="mt-1 shrink-0 text-primary"
+                    >
+                      <HugeiconsIcon icon={Linkedin01Icon} />
+                    </a>
+                  </div>
+                  <CardDescription className="text-sm leading-6">
+                    {member.headline}
+                  </CardDescription>
+                </CardHeader>
+                <CardContent className="mt-auto px-6 pb-6 pt-0">
+                  <p className="text-sm font-medium text-muted-foreground">
+                    {member.location}
+                  </p>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
         </div>
       </section>
 
