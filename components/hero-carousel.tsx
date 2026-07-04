@@ -11,7 +11,6 @@ import {
   CarouselItem,
 } from "@/components/ui/carousel"
 import { sessionPosts } from "@/lib/site-data"
-import { cn } from "@/lib/utils"
 
 export function HeroCarousel() {
   const progressNode = React.useRef<HTMLDivElement>(null)
@@ -19,8 +18,6 @@ export function HeroCarousel() {
   const timeoutId = React.useRef(0)
   const rafId = React.useRef(0)
   const [api, setApi] = React.useState<CarouselApi>()
-  const [showAutoplayProgress, setShowAutoplayProgress] =
-    React.useState(false)
   const autoplay = React.useRef(
     Autoplay({
       delay: 3000,
@@ -46,8 +43,6 @@ export function HeroCarousel() {
         node.style.animationDuration = `${timeUntilNext}ms`
       }, 0)
     })
-
-    setShowAutoplayProgress(true)
   }, [])
 
   React.useEffect(() => {
@@ -58,7 +53,6 @@ export function HeroCarousel() {
       .on("autoplay:timerset", () =>
         startProgress(autoplayPlugin.timeUntilNext())
       )
-      .on("autoplay:timerstopped", () => setShowAutoplayProgress(false))
 
     startProgress(autoplayPlugin.timeUntilNext())
   }, [api, startProgress])
@@ -107,12 +101,7 @@ export function HeroCarousel() {
         </CarouselContent>
       </Carousel>
 
-      <div
-        className={cn(
-          "mx-auto h-1.5 w-full max-w-xl overflow-hidden rounded-full bg-muted transition-opacity",
-          showAutoplayProgress ? "opacity-100" : "opacity-0"
-        )}
-      >
+      <div className="mx-auto h-1.5 w-full max-w-xl overflow-hidden rounded-full bg-muted">
         <div
           ref={progressNode}
           className="h-full origin-left animate-autoplay-progress rounded-full bg-primary"
