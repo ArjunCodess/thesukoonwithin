@@ -1,8 +1,8 @@
-import Image from "next/image"
 import Link from "next/link"
 import { ArrowRight01Icon } from "@hugeicons/core-free-icons"
 import { HugeiconsIcon } from "@hugeicons/react"
 
+import { HeroCarousel } from "@/components/hero-carousel"
 import { buttonVariants } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import {
@@ -16,19 +16,17 @@ import { cn } from "@/lib/utils"
 export default function Page() {
   return (
     <div className="bg-background">
-      <section className="mx-auto grid max-w-7xl gap-10 px-4 py-12 sm:px-6 md:grid-cols-[1.05fr_0.95fr] md:items-center md:py-18 lg:px-8">
-        <div className="flex flex-col gap-7">
-          <div className="flex flex-col gap-5">
-            <h1 className="max-w-3xl font-heading text-4xl leading-tight font-semibold tracking-normal sm:text-5xl md:text-6xl">
-              A youth-led mental health movement for Gen Z.
-            </h1>
-            <p className="max-w-2xl text-base leading-7 text-muted-foreground sm:text-lg">
-              The Sukoon Within creates safe, non-judgemental spaces where young
-              people can talk about what they feel, learn emotional language,
-              and find community-led support.
-            </p>
-          </div>
-          <div className="flex flex-col gap-3 sm:flex-row">
+      <section className="mx-auto flex max-w-7xl flex-col items-center gap-10 px-4 py-12 text-center sm:px-6 md:py-18 lg:px-8">
+        <div className="flex max-w-4xl flex-col items-center gap-7">
+          <h1 className="max-w-3xl font-heading text-4xl leading-tight font-semibold tracking-normal sm:text-5xl md:text-6xl">
+            A youth-led mental health movement for Gen Z.
+          </h1>
+          <p className="max-w-2xl text-base leading-7 text-muted-foreground sm:text-lg">
+            The Sukoon Within creates safe, non-judgemental spaces where young
+            people can talk about what they feel, learn emotional language, and
+            find community-led support.
+          </p>
+          <div className="flex flex-col justify-center gap-3 sm:flex-row">
             <Link href="/join" className={cn(buttonVariants({ size: "lg" }))}>
               Join the movement
               <HugeiconsIcon icon={ArrowRight01Icon} data-icon="inline-end" />
@@ -43,16 +41,7 @@ export default function Page() {
             </a>
           </div>
         </div>
-        <Card className="overflow-hidden rounded-4xl p-3">
-          <Image
-            src="/logo.jpg"
-            alt="The Sukoon Within identity"
-            width={1080}
-            height={1080}
-            priority
-            className="aspect-[4/3] w-full rounded-3xl object-cover"
-          />
-        </Card>
+        <HeroCarousel />
       </section>
 
       <section className="border-y bg-muted/30">
