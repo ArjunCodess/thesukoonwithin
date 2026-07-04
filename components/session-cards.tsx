@@ -23,14 +23,14 @@ export function SessionCards() {
     <div className="grid gap-5 md:grid-cols-2">
       {sessionPosts.map((post) => (
         <Dialog key={post.href}>
-          <Card className="group flex min-h-full flex-col gap-0 overflow-hidden rounded-3xl p-0 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md">
+          <Card className="flex min-h-full flex-col gap-0 overflow-hidden rounded-3xl p-0">
             <div className="relative aspect-[4/3] max-h-72 shrink-0 overflow-hidden bg-muted sm:aspect-video">
               <Image
                 src={post.image}
                 alt={`${post.title} photo`}
                 fill
                 sizes="(max-width: 768px) 100vw, 50vw"
-                className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+                className="object-cover"
               />
             </div>
             <CardContent className="flex min-h-0 flex-1 flex-col gap-5 p-5 sm:p-6">

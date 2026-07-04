@@ -18,8 +18,8 @@ export const metadata: Metadata = {
 export default function WorkPage() {
   return (
     <div className="bg-background">
-      <section className="mx-auto grid max-w-7xl gap-8 px-4 py-12 sm:px-6 md:grid-cols-[1fr_0.5fr] md:items-end md:py-16 lg:px-8">
-        <div className="flex flex-col gap-5">
+      <section className="mx-auto flex max-w-7xl flex-col gap-5 px-4 py-14 sm:px-6 md:py-18 lg:px-8">
+        <div className="flex max-w-4xl flex-col gap-5">
           <p className="text-sm font-medium text-primary">Our work</p>
           <h1 className="max-w-4xl font-heading text-4xl leading-tight font-semibold tracking-normal sm:text-5xl">
             Sessions that help young people name what they feel.
@@ -29,16 +29,19 @@ export default function WorkPage() {
             offline formats, reaching more than 1,000 young minds through
             mental health education and community-led awareness.
           </p>
+          <a
+            href={siteLinks.linkedin}
+            target="_blank"
+            rel="noreferrer"
+            className={cn(
+              buttonVariants({ variant: "outline", size: "lg" }),
+              "w-fit"
+            )}
+          >
+            View public updates
+            <HugeiconsIcon icon={ArrowRight01Icon} data-icon="inline-end" />
+          </a>
         </div>
-        <a
-          href={siteLinks.linkedin}
-          target="_blank"
-          rel="noreferrer"
-          className={cn(buttonVariants({ variant: "outline", size: "lg" }), "w-fit md:justify-self-end")}
-        >
-          View public updates
-          <HugeiconsIcon icon={ArrowRight01Icon} data-icon="inline-end" />
-        </a>
       </section>
 
       <section className="border-y bg-muted/30">

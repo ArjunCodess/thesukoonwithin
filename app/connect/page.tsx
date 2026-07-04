@@ -44,9 +44,8 @@ export default function ConnectPage() {
               href={item.href}
               target={item.href.startsWith("mailto:") ? undefined : "_blank"}
               rel={item.href.startsWith("mailto:") ? undefined : "noreferrer"}
-              className="group"
             >
-              <Card className="h-full rounded-4xl p-6 transition-colors group-hover:bg-muted/40">
+              <Card className="h-full rounded-4xl p-6">
                 <CardContent className="p-0">
                   <div className="flex items-center justify-between gap-4">
                     <div className="flex size-11 items-center justify-center rounded-full border bg-muted">
@@ -54,7 +53,7 @@ export default function ConnectPage() {
                     </div>
                     <HugeiconsIcon
                       icon={ArrowRight01Icon}
-                      className="text-muted-foreground transition-transform group-hover:translate-x-1"
+                      className="text-muted-foreground"
                     />
                   </div>
                   <h2 className="mt-6 text-2xl font-semibold">{item.label}</h2>
