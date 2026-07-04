@@ -1,6 +1,7 @@
 "use client"
 
 import Image from "next/image"
+import Link from "next/link"
 import { ArrowRight01Icon } from "@hugeicons/core-free-icons"
 import { HugeiconsIcon } from "@hugeicons/react"
 
@@ -53,7 +54,7 @@ export function SessionCards() {
                 >
                   Read more
                 </DialogTrigger>
-                <a
+                <Link
                   href={post.href}
                   target="_blank"
                   rel="noreferrer"
@@ -67,7 +68,7 @@ export function SessionCards() {
                     icon={ArrowRight01Icon}
                     data-icon="inline-end"
                   />
-                </a>
+                </Link>
               </div>
             </CardContent>
           </Card>
@@ -95,7 +96,7 @@ export function SessionCards() {
               ))}
             </div>
             <DialogFooter>
-              <a
+              <Link
                 href={post.href}
                 target="_blank"
                 rel="noreferrer"
@@ -106,7 +107,7 @@ export function SessionCards() {
                   icon={ArrowRight01Icon}
                   data-icon="inline-end"
                 />
-              </a>
+              </Link>
             </DialogFooter>
           </DialogContent>
         </Dialog>

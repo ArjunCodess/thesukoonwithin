@@ -29,7 +29,7 @@ export default function WorkPage() {
             offline formats, reaching more than 1,000 young minds through
             mental health education and community-led awareness.
           </p>
-          <a
+          <Link
             href={siteLinks.linkedin}
             target="_blank"
             rel="noreferrer"
@@ -40,7 +40,7 @@ export default function WorkPage() {
           >
             View public updates
             <HugeiconsIcon icon={ArrowRight01Icon} data-icon="inline-end" />
-          </a>
+          </Link>
         </div>
       </section>
 

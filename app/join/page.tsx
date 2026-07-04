@@ -1,7 +1,9 @@
 import type { Metadata } from "next"
+import Link from "next/link"
 import { ArrowRight01Icon } from "@hugeicons/core-free-icons"
 import { HugeiconsIcon } from "@hugeicons/react"
 
+import { Badge } from "@/components/ui/badge"
 import { buttonVariants } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { joinRoles, siteLinks } from "@/lib/site-data"
@@ -28,7 +30,7 @@ export default function JoinPage() {
               partner spaces.
             </p>
           </div>
-          <a
+          <Link
             href={siteLinks.googleForm}
             target="_blank"
             rel="noreferrer"
@@ -36,7 +38,7 @@ export default function JoinPage() {
           >
             Open application form
             <HugeiconsIcon icon={ArrowRight01Icon} data-icon="inline-end" />
-          </a>
+          </Link>
         </div>
       </section>
 
@@ -54,12 +56,9 @@ export default function JoinPage() {
                 </p>
                 <div className="mt-6 flex flex-wrap gap-2">
                   {role.focus.map((item) => (
-                    <span
-                      key={item}
-                      className="rounded-4xl border bg-muted px-3 py-1 text-sm text-muted-foreground"
-                    >
+                    <Badge key={item} variant="secondary">
                       {item}
-                    </span>
+                    </Badge>
                   ))}
                 </div>
               </CardContent>
@@ -79,7 +78,7 @@ export default function JoinPage() {
             and Outreach & Networking Intern applications.
           </p>
         </div>
-        <a
+        <Link
           href={siteLinks.googleForm}
           target="_blank"
           rel="noreferrer"
@@ -87,7 +86,7 @@ export default function JoinPage() {
         >
           Send my application
           <HugeiconsIcon icon={ArrowRight01Icon} data-icon="inline-end" />
-        </a>
+        </Link>
       </section>
     </div>
   )

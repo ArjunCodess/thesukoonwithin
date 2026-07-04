@@ -31,14 +31,14 @@ export default function Page() {
               Join the movement
               <HugeiconsIcon icon={ArrowRight01Icon} data-icon="inline-end" />
             </Link>
-            <a
+            <Link
               href={siteLinks.googleForm}
               target="_blank"
               rel="noreferrer"
               className={cn(buttonVariants({ variant: "outline", size: "lg" }))}
             >
               Apply for internship
-            </a>
+            </Link>
           </div>
         </div>
         <HeroCarousel />

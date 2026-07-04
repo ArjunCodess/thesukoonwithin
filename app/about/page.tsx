@@ -131,7 +131,7 @@ export default function AboutPage() {
                     <CardTitle className="text-2xl leading-tight">
                       {member.name}
                     </CardTitle>
-                    <a
+                    <Link
                       href={member.href}
                       target="_blank"
                       rel="noreferrer"
@@ -139,7 +139,7 @@ export default function AboutPage() {
                       className="mt-1 shrink-0 text-primary"
                     >
                       <HugeiconsIcon icon={Linkedin01Icon} />
-                    </a>
+                    </Link>
                   </div>
                   <CardDescription className="text-sm leading-6">
                     {member.headline}

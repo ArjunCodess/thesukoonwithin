@@ -34,28 +34,28 @@ export function SiteFooter() {
           </div>
           <div className="flex flex-col gap-3">
             <p className="text-sm font-medium">Contact</p>
-            <a
+            <Link
               href={`mailto:${siteLinks.email}`}
               className="text-sm text-muted-foreground hover:text-foreground"
             >
               {siteLinks.email}
-            </a>
-            <a
+            </Link>
+            <Link
               href={siteLinks.instagram}
               target="_blank"
               rel="noreferrer"
               className="text-sm text-muted-foreground hover:text-foreground"
             >
               Instagram
-            </a>
-            <a
+            </Link>
+            <Link
               href={siteLinks.linkedin}
               target="_blank"
               rel="noreferrer"
               className="text-sm text-muted-foreground hover:text-foreground"
             >
               LinkedIn
-            </a>
+            </Link>
           </div>
         </div>
       </div>

@@ -1,4 +1,5 @@
 import type { Metadata } from "next"
+import Link from "next/link"
 import { ArrowRight01Icon } from "@hugeicons/core-free-icons"
 import { HugeiconsIcon } from "@hugeicons/react"
 
@@ -27,19 +28,19 @@ export default function ConnectPage() {
             community work, media queries, or youth volunteer conversations.
           </p>
         </div>
-        <a
+        <Link
           href={`mailto:${siteLinks.email}`}
           className={cn(buttonVariants({ size: "lg" }), "w-fit md:justify-self-end")}
         >
           Email the team
           <HugeiconsIcon icon={ArrowRight01Icon} data-icon="inline-end" />
-        </a>
+        </Link>
       </section>
 
       <section className="border-y bg-muted/30">
         <div className="mx-auto grid max-w-7xl gap-4 px-4 py-12 sm:px-6 md:grid-cols-3 lg:px-8">
           {socialLinks.map((item) => (
-            <a
+            <Link
               key={item.label}
               href={item.href}
               target={item.href.startsWith("mailto:") ? undefined : "_blank"}
@@ -62,7 +63,7 @@ export default function ConnectPage() {
                   </p>
                 </CardContent>
               </Card>
-            </a>
+            </Link>
           ))}
         </div>
       </section>

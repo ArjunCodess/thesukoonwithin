@@ -63,7 +63,7 @@ export function MobileNav() {
 							<Button
 								className="w-full"
 								variant="outline"
-								render={<a href={siteLinks.googleForm} target="_blank" rel="noreferrer" />}
+								render={<Link href={siteLinks.googleForm} target="_blank" rel="noreferrer" />}
 								nativeButton={false}
 							>
 								Open application form
