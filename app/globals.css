@@ -130,3 +130,20 @@
     @apply font-sans;
     }
 }
+
+@layer utilities {
+  @keyframes autoplay-progress {
+    from {
+      transform: scaleX(0);
+    }
+    to {
+      transform: scaleX(1);
+    }
+  }
+
+  .animate-autoplay-progress {
+    animation-name: autoplay-progress;
+    animation-timing-function: linear;
+    animation-fill-mode: forwards;
+  }
+}
