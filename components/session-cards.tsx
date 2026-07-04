@@ -19,30 +19,32 @@ import { cn } from "@/lib/utils"
 
 export function SessionCards() {
   return (
-    <div className="grid gap-4 md:grid-cols-2">
+    <div className="grid gap-5 md:grid-cols-2">
       {sessionPosts.map((post) => (
         <Dialog key={post.href}>
-          <article className="flex min-h-full flex-col overflow-hidden rounded-4xl border bg-card shadow-sm">
-            <div className="relative aspect-video bg-muted">
+          <article className="group flex min-h-full flex-col overflow-hidden rounded-3xl border bg-card shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md">
+            <div className="relative aspect-[4/3] max-h-72 shrink-0 overflow-hidden bg-muted sm:aspect-video">
               <Image
                 src={post.image}
                 alt={`${post.title} photo`}
                 fill
                 sizes="(max-width: 768px) 100vw, 50vw"
-                className="object-cover"
+                className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
               />
             </div>
-            <div className="flex flex-1 flex-col gap-5 p-6">
-              <div className="flex flex-col gap-2">
+            <div className="flex min-h-0 flex-1 flex-col gap-5 p-5 sm:p-6">
+              <div className="flex min-h-0 flex-1 flex-col gap-2">
                 <p className="text-sm font-medium text-muted-foreground">
-                  {post.location} · {post.date}
+                  {post.location} - {post.date}
                 </p>
-                <h3 className="text-2xl font-semibold">{post.title}</h3>
-                <p className="leading-7 text-muted-foreground">
+                <h3 className="text-xl leading-tight font-semibold sm:text-2xl">
+                  {post.title}
+                </h3>
+                <p className="max-h-28 overflow-y-auto pr-2 leading-7 text-muted-foreground sm:max-h-32">
                   {post.summary}
                 </p>
               </div>
-              <div className="mt-auto flex flex-col gap-3 sm:flex-row">
+              <div className="mt-auto flex shrink-0 flex-col gap-3 sm:flex-row sm:items-center">
                 <DialogTrigger
                   render={
                     <Button className="w-full sm:w-fit" variant="outline" />
@@ -74,10 +76,10 @@ export function SessionCards() {
                 {post.title}
               </DialogTitle>
               <DialogDescription>
-                {post.author} · {post.location} · {post.date}
+                {post.author} - {post.location} - {post.date}
               </DialogDescription>
             </DialogHeader>
-            <div className="relative aspect-video overflow-hidden rounded-3xl bg-muted">
+            <div className="relative aspect-video max-h-[360px] overflow-hidden rounded-3xl bg-muted">
               <Image
                 src={post.image}
                 alt={`${post.title} photo`}
