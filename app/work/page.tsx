@@ -46,11 +46,11 @@ export default function WorkPage() {
           {impactStats.map((stat) => (
             <Card
               key={stat.label}
-              className="rounded-3xl bg-background p-5"
+              className="gap-2 rounded-3xl bg-background p-5"
             >
-              <p className="font-mono text-3xl font-semibold">{stat.value}</p>
-              <p className="mt-2 text-sm font-medium">{stat.label}</p>
-              <p className="mt-2 text-sm leading-6 text-muted-foreground">
+              <p className="font-mono text-2xl font-semibold">{stat.value}</p>
+              <p className="text-sm font-medium">{stat.label}</p>
+              <p className="text-sm leading-6 text-muted-foreground">
                 {stat.detail}
               </p>
             </Card>
