@@ -5,12 +5,7 @@ import { HugeiconsIcon } from "@hugeicons/react"
 import { HeroCarousel } from "@/components/hero-carousel"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
-import {
-  impactStats,
-  missionCards,
-  siteLinks,
-  workHighlights,
-} from "@/lib/site-data"
+import { impactStats, missionCards, workHighlights } from "@/lib/site-data"
 import { cn } from "@/lib/utils"
 
 export default function Page() {
@@ -40,16 +35,10 @@ export default function Page() {
               variant="outline"
               size="lg"
               className="w-full sm:w-fit"
-              render={
-                <Link
-                  href={siteLinks.googleForm}
-                  target="_blank"
-                  rel="noreferrer"
-                />
-              }
+              render={<Link href="/work" />}
               nativeButton={false}
             >
-              Apply for internship
+              See our work
             </Button>
           </div>
         </div>
@@ -169,11 +158,17 @@ export default function Page() {
             Help take mental health education to more young people.
           </h2>
           <p className="max-w-2xl leading-7 text-muted-foreground">
-            Applications are open for Social Media and Outreach & Networking
-            interns who want to build meaningful mental health awareness work.
+            Applications are open for internships and contributors across
+            research, on-site volunteering, event planning, social media
+            management, and design.
           </p>
         </div>
-        <Button size="lg" render={<Link href="/join" />} nativeButton={false}>
+        <Button
+          size="lg"
+          className="w-full sm:w-fit md:justify-self-end"
+          render={<Link href="/join" />}
+          nativeButton={false}
+        >
           Join us
           <HugeiconsIcon icon={ArrowRight01Icon} data-icon="inline-end" />
         </Button>

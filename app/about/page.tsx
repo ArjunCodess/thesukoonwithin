@@ -5,7 +5,6 @@ import { Linkedin01Icon } from "@hugeicons/core-free-icons"
 import { HugeiconsIcon } from "@hugeicons/react"
 
 import { Badge } from "@/components/ui/badge"
-import { Button } from "@/components/ui/button"
 import {
   Card,
   CardContent,
@@ -163,16 +162,13 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="mx-auto grid max-w-7xl gap-6 px-4 pb-14 sm:px-6 md:grid-cols-[1fr_auto] md:items-center lg:px-8">
+      <section className="mx-auto grid max-w-7xl gap-6 px-4 pb-14 sm:px-6 lg:px-8">
         <div className="flex flex-col gap-3">
           <p className="text-sm font-medium text-primary">Thank you</p>
           <h2 className="font-heading text-3xl leading-tight font-semibold">
             No peace is better than the peace within.
           </h2>
         </div>
-        <Button size="lg" render={<Link href="/join" />} nativeButton={false}>
-          Join us now
-        </Button>
       </section>
     </div>
   )
