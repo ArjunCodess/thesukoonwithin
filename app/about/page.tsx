@@ -71,7 +71,7 @@ export default function AboutPage() {
       </section>
 
       <section className="border-y bg-muted/30">
-        <div className="mx-auto flex max-w-5xl flex-col gap-10 px-4 py-14 sm:px-6 lg:px-8">
+        <div className="mx-auto flex max-w-6xl flex-col gap-10 px-4 py-14 sm:px-6 lg:px-8">
           <div className="mx-auto flex max-w-3xl flex-col items-center gap-4 text-center">
             <p className="text-sm font-medium tracking-[0.28em] text-primary uppercase">
               Our team

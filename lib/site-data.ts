@@ -294,7 +294,7 @@ export const teamMembers = [
   {
     name: "Arjun Vijay Prakash",
     role: "Website Builder",
-    headline: "Full-stack developer who built The Sukoon Within website",
+    headline: "Website builder @ The Sukoon Within",
     location: "Lucknow, India",
     href: "https://www.linkedin.com/in/arjuncodess/",
     image: "/people/arjun.jpg",
