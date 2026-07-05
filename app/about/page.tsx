@@ -88,7 +88,7 @@ export default function AboutPage() {
           </div>
 
           <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {teamMembers.map((member, index) => (
+            {teamMembers.map((member) => (
               <Card
                 key={member.href}
                 className="h-full gap-0 overflow-hidden rounded-4xl p-0"
@@ -97,34 +97,13 @@ export default function AboutPage() {
                   <Badge className="absolute top-4 left-4 z-10 tracking-[0.16em] uppercase">
                     {member.role}
                   </Badge>
-                  {"image" in member ? (
-                    <Image
-                      src={member.image}
-                      alt={`${member.name} portrait`}
-                      fill
-                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                      className="object-cover"
-                    />
-                  ) : (
-                    <div
-                      className={cn(
-                        "flex size-full items-center justify-center bg-gradient-to-br text-primary",
-                        index % 3 === 0
-                          ? "from-secondary to-accent"
-                          : index % 3 === 1
-                            ? "from-card to-secondary"
-                            : "from-accent to-card"
-                      )}
-                    >
-                      <span className="font-heading text-6xl font-semibold">
-                        {member.name
-                          .split(" ")
-                          .map((part) => part[0])
-                          .join("")
-                          .slice(0, 2)}
-                      </span>
-                    </div>
-                  )}
+                  <Image
+                    src={member.image}
+                    alt={`${member.name} portrait`}
+                    fill
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                    className="object-cover"
+                  />
                 </div>
                 <CardHeader className="gap-3 p-6">
                   <div className="flex items-start justify-between gap-3">
@@ -145,7 +124,7 @@ export default function AboutPage() {
                     {member.headline}
                   </CardDescription>
                 </CardHeader>
-                <CardContent className="mt-auto px-6 pb-6 pt-0">
+                <CardContent className="mt-auto px-6 pt-0 pb-6">
                   <p className="text-sm font-medium text-muted-foreground">
                     {member.location}
                   </p>
@@ -173,10 +152,7 @@ export default function AboutPage() {
         </div>
         <div className="grid gap-4 md:grid-cols-3">
           {missionCards.map((card) => (
-            <Card
-              key={card.title}
-              className="rounded-4xl p-6"
-            >
+            <Card key={card.title} className="rounded-4xl p-6">
               <CardContent className="p-0">
                 <h3 className="text-lg font-semibold">{card.title}</h3>
                 <p className="mt-3 leading-7 text-muted-foreground">

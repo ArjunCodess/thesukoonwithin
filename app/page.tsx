@@ -47,10 +47,7 @@ export default function Page() {
       <section className="border-y bg-muted/30">
         <div className="mx-auto grid max-w-7xl gap-4 px-4 py-8 sm:px-6 md:grid-cols-4 lg:px-8">
           {impactStats.map((stat) => (
-            <Card
-              key={stat.label}
-              className="gap-2 rounded-3xl p-5"
-            >
+            <Card key={stat.label} className="gap-2 rounded-3xl p-5">
               <p className="font-mono text-2xl font-semibold">{stat.value}</p>
               <p className="text-sm font-medium">{stat.label}</p>
               <p className="text-sm leading-6 text-muted-foreground">
@@ -128,10 +125,7 @@ export default function Page() {
           </div>
           <div className="grid gap-4 md:grid-cols-2">
             {workHighlights.slice(0, 4).map((item) => (
-              <Card
-                key={item.title}
-                className="rounded-4xl p-6"
-              >
+              <Card key={item.title} className="rounded-4xl p-6">
                 <CardContent className="p-0">
                   <p className="text-sm font-medium text-muted-foreground">
                     {item.meta}
@@ -157,7 +151,7 @@ export default function Page() {
       <section className="mx-auto grid max-w-7xl gap-6 px-4 py-14 sm:px-6 md:grid-cols-[1fr_auto] md:items-center lg:px-8">
         <div className="flex flex-col gap-3">
           <p className="text-sm font-medium text-primary">Join us now</p>
-          <h2 className="font-heading text-3xl leading-tight font-semibold sm:text-4xl text-balance">
+          <h2 className="font-heading text-3xl leading-tight font-semibold text-balance sm:text-4xl">
             Help take mental health education to more young people.
           </h2>
           <p className="max-w-2xl leading-7 text-muted-foreground">
