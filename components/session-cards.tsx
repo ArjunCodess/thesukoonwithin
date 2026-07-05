@@ -16,6 +16,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog"
+import { ScrollArea } from "@/components/ui/scroll-area"
 import { sessionPosts } from "@/lib/site-data"
 import { cn } from "@/lib/utils"
 
@@ -25,7 +26,7 @@ export function SessionCards() {
       {sessionPosts.map((post) => (
         <Dialog key={post.href}>
           <Card className="flex min-h-full flex-col gap-0 overflow-hidden rounded-3xl p-0">
-            <div className="relative aspect-[4/3] max-h-72 shrink-0 overflow-hidden bg-muted sm:aspect-video">
+            <div className="relative h-56 shrink-0 overflow-hidden bg-muted sm:h-64 md:h-72">
               <Image
                 src={post.image}
                 alt={`${post.title} photo`}
@@ -72,8 +73,8 @@ export function SessionCards() {
               </div>
             </CardContent>
           </Card>
-          <DialogContent className="max-h-[min(760px,calc(100svh-2rem))] overflow-y-auto sm:max-w-2xl">
-            <DialogHeader>
+          <DialogContent className="flex max-h-[calc(100svh-1rem)] flex-col gap-0 overflow-hidden p-0 sm:max-h-[min(760px,calc(100svh-2rem))] sm:max-w-2xl">
+            <DialogHeader className="shrink-0 p-5 pb-4 sm:p-6 sm:pb-4">
               <DialogTitle className="pr-10 text-2xl leading-tight">
                 {post.title}
               </DialogTitle>
@@ -81,32 +82,34 @@ export function SessionCards() {
                 {post.author} - {post.location} - {post.date}
               </DialogDescription>
             </DialogHeader>
-            <div className="relative aspect-video max-h-[360px] overflow-hidden rounded-3xl bg-muted">
-              <Image
-                src={post.image}
-                alt={`${post.title} photo`}
-                fill
-                sizes="(max-width: 750px) 100vw, 672px"
-                className="object-cover"
-              />
-            </div>
-            <div className="flex flex-col gap-4 text-base leading-7 text-muted-foreground">
-              {post.content.map((paragraph) => (
-                <p key={paragraph}>{paragraph}</p>
-              ))}
-            </div>
-            <DialogFooter>
+            <ScrollArea className="flex-1 px-5 pb-5 sm:px-6 sm:pb-6">
+              <div className="relative h-52 w-full overflow-hidden rounded-3xl bg-muted sm:h-72">
+                <Image
+                  src={post.image}
+                  alt={`${post.title} photo`}
+                  fill
+                  sizes="(max-width: 750px) 100vw, 672px"
+                  className="object-cover"
+                />
+              </div>
+              <div className="mt-5 flex flex-col gap-4 text-base leading-7 text-muted-foreground">
+                {post.content.map((paragraph) => (
+                  <p key={paragraph}>{paragraph}</p>
+                ))}
+              </div>
+            </ScrollArea>
+            <DialogFooter className="shrink-0 border-t px-5 py-4 sm:px-6">
               <Link
                 href={post.href}
                 target="_blank"
                 rel="noreferrer"
-                className={cn(buttonVariants({ size: "lg" }))}
+                className={cn(
+                  buttonVariants({ size: "lg" }),
+                  "w-full sm:w-fit"
+                )}
               >
                 Read on LinkedIn
-                <HugeiconsIcon
-                  icon={ArrowRight01Icon}
-                  data-icon="inline-end"
-                />
+                <HugeiconsIcon icon={ArrowRight01Icon} data-icon="inline-end" />
               </Link>
             </DialogFooter>
           </DialogContent>
