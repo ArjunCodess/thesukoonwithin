@@ -6,8 +6,10 @@ import {
 } from "@hugeicons/core-free-icons"
 
 export const siteLinks = {
-  googleForm:
+  internshipForm:
     "https://docs.google.com/forms/d/e/1FAIpQLSc3yn3runhY5ByXnGcYY8pvGVMkb3q-sYDzdkb7dssVpE5kcg/viewform",
+  contributorForm:
+    "https://docs.google.com/forms/d/e/1FAIpQLScN_CYfdDJ2KOYSgsSMJwmw466kIsc4u29UEYfldnuiGSRvOQ/viewform",
   instagram: "https://www.instagram.com/thesukoonwithin_/",
   linkedin: "https://www.linkedin.com/company/the-sukoon-within/",
   email: "thesukoonwithin@gmail.com",
@@ -175,13 +177,68 @@ export const heroImages = [
 export const joinRoles = [
   {
     title: "Social Media Intern",
+    form: "Internship form",
     body: "Help turn mental health education into honest, readable content for young people online.",
     focus: ["Content planning", "Campaign ideas", "Youth-first storytelling"],
   },
   {
     title: "Outreach & Networking Intern",
+    form: "Internship form",
     body: "Help connect the movement with schools, NGOs, communities, and youth volunteers who care about mental health.",
     focus: ["Partner outreach", "Session coordination", "Community follow-ups"],
+  },
+  {
+    title: "Researcher",
+    form: "Contributor form",
+    body: "Support mental health education with careful research, references, and youth-focused learning material.",
+    focus: ["Topic research", "Evidence review", "Session resources"],
+  },
+  {
+    title: "On-site Volunteer",
+    form: "Contributor form",
+    body: "Help sessions run smoothly in schools, NGOs, and community spaces where in-person support matters.",
+    focus: ["Session support", "Participant care", "Ground coordination"],
+  },
+  {
+    title: "On-site Event Planner",
+    form: "Contributor form",
+    body: "Plan and coordinate offline awareness sessions, local events, and partner-facing logistics.",
+    focus: ["Event planning", "Venue coordination", "Partner follow-ups"],
+  },
+  {
+    title: "Social Media Manager",
+    form: "Contributor form",
+    body: "Lead social content systems, posting calendars, campaigns, and community-facing updates.",
+    focus: ["Content calendar", "Campaign management", "Community updates"],
+  },
+  {
+    title: "Designer",
+    form: "Contributor form",
+    body: "Create visual assets that make mental health education clear, calm, and accessible online and offline.",
+    focus: ["Post design", "Campaign visuals", "Event material"],
+  },
+] as const
+
+export const applicationForms = [
+  {
+    title: "Internship applications",
+    href: siteLinks.internshipForm,
+    body: "Use this form for Social Media Intern and Outreach & Networking Intern roles.",
+    cta: "Apply for internship",
+    roles: ["Social Media Intern", "Outreach & Networking Intern"],
+  },
+  {
+    title: "Contributor applications",
+    href: siteLinks.contributorForm,
+    body: "Use this form for researchers, on-site volunteers, event planners, social media managers, and designers.",
+    cta: "Apply as contributor",
+    roles: [
+      "Researcher",
+      "On-site Volunteers",
+      "On-site Event Planners",
+      "Social Media Manager",
+      "Designers",
+    ],
   },
 ] as const
 
