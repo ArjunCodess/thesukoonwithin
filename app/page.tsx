@@ -17,7 +17,7 @@ export default function Page() {
   return (
     <div className="bg-background">
       <section className="mx-auto flex max-w-7xl flex-col items-center gap-10 px-4 py-12 text-center sm:px-6 md:py-18 lg:px-8">
-        <div className="flex max-w-4xl flex-col items-center gap-7">
+        <div className="flex w-full max-w-4xl flex-col items-center gap-7">
           <h1 className="max-w-3xl font-heading text-4xl leading-tight font-semibold tracking-normal sm:text-5xl md:text-6xl">
             A youth-led mental health movement for Gen Z.
           </h1>
@@ -26,9 +26,10 @@ export default function Page() {
             people can talk about what they feel, learn emotional language, and
             find community-led support.
           </p>
-          <div className="flex flex-col justify-center gap-3 sm:flex-row">
+          <div className="flex w-full flex-col justify-center gap-3 sm:w-auto sm:flex-row">
             <Button
               size="lg"
+              className="w-full sm:w-fit"
               render={<Link href="/join" />}
               nativeButton={false}
             >
@@ -38,6 +39,7 @@ export default function Page() {
             <Button
               variant="outline"
               size="lg"
+              className="w-full sm:w-fit"
               render={
                 <Link
                   href={siteLinks.googleForm}
