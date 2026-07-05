@@ -145,6 +145,33 @@ export const sessionPosts = [
   },
 ] as const
 
+export const heroImages = [
+  {
+    src: "/work/soumili.jpg",
+    alt: "Soumili Das leading a mental health education session",
+  },
+  {
+    src: "/work/bhakti.jpg",
+    alt: "Mental health ambassador session with students",
+  },
+  {
+    src: "/work/jaipur.jpg",
+    alt: "Jaipur team session with children",
+  },
+  {
+    src: "/work/pradhi.jpg",
+    alt: "Bhopal session on friendship and empathy",
+  },
+  {
+    src: "/work/angela.jpeg",
+    alt: "Angela's mental health awareness session",
+  },
+  {
+    src: "/work/harmanpreet.jpeg",
+    alt: "Harmanpreet's mental health awareness session",
+  },
+] as const
+
 export const joinRoles = [
   {
     title: "Social Media Intern",
@@ -200,58 +227,12 @@ export const teamMembers = [
     image: "/people/soumili-das.png",
   },
   {
-    name: "Bhakti",
-    role: "Mental Health Ambassador",
-    headline: "Mental health session facilitator",
-    location: "India",
-    href: "https://www.linkedin.com/in/missbhakti/",
-    image: "/people/bhakti.png",
-  },
-  {
     name: "Pranshi Sachdeva",
     role: "Manager",
     headline: "Manager @ The Sukoon Within",
     location: "Haryana, India",
     href: "https://www.linkedin.com/in/pranshi-sachdeva/",
     image: "/people/pranshi.png",
-  },
-  {
-    name: "Manan Jindal",
-    role: "Policy & IR",
-    headline: "Co-Founder, The Youth Prism | Researcher, The Geostrata",
-    location: "Kota, Rajasthan, India",
-    href: "https://www.linkedin.com/in/manan-jindal-854286388/",
-    image: "/people/manan.jpg",
-  },
-  {
-    name: "Devansh Shukla",
-    role: "Student",
-    headline: "Class 12th PCM student | Intern at Edutri",
-    location: "Bhadohi, Uttar Pradesh, India",
-    href: "https://www.linkedin.com/in/devansh-shukla-6967403b2/",
-    image: "/people/devansh.png",
-  },
-  {
-    name: "Yoghitha Venkatesh",
-    role: "Strategy",
-    headline: "Business strategy, innovation, and problem solving",
-    location: "Bengaluru, Karnataka, India",
-    href: "https://www.linkedin.com/in/yoghitha-venkatesh-317689356/",
-    image: "/people/yoghitha.png",
-  },
-  {
-    name: "Harmanpreet Kaur Saini",
-    role: "Psychology Student",
-    headline: "Passionate about mental health and human behavior",
-    location: "Mumbai, Maharashtra, India",
-    href: "https://www.linkedin.com/in/harmanpreet-kaur-saini-6524a1346/",
-  },
-  {
-    name: "Sanjana Deepak",
-    role: "Research & Content",
-    headline: "Researcher and content writer at The Sukoon Within",
-    location: "Dubai, United Arab Emirates",
-    href: "https://www.linkedin.com/in/sanjana-deepak-54326034b/",
   },
   {
     name: "Arjun Vijay Prakash",
