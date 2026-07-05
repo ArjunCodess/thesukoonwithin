@@ -3,10 +3,9 @@ import Link from "next/link"
 import { ArrowRight01Icon } from "@hugeicons/core-free-icons"
 import { HugeiconsIcon } from "@hugeicons/react"
 
-import { buttonVariants } from "@/components/ui/button"
+import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { siteLinks, socialLinks } from "@/lib/site-data"
-import { cn } from "@/lib/utils"
 
 export const metadata: Metadata = {
   title: "Connect",
@@ -28,13 +27,15 @@ export default function ConnectPage() {
             community work, media queries, or youth volunteer conversations.
           </p>
         </div>
-        <Link
-          href={`mailto:${siteLinks.email}`}
-          className={cn(buttonVariants({ size: "lg" }), "w-fit md:justify-self-end")}
+        <Button
+          size="lg"
+          className="w-fit md:justify-self-end"
+          render={<Link href={`mailto:${siteLinks.email}`} />}
+          nativeButton={false}
         >
           Email the team
           <HugeiconsIcon icon={ArrowRight01Icon} data-icon="inline-end" />
-        </Link>
+        </Button>
       </section>
 
       <section className="border-y bg-muted/30">
@@ -84,7 +85,7 @@ export default function ConnectPage() {
           ].map((item) => (
             <Card key={item} className="rounded-3xl p-5">
               <CardContent className="p-0">
-                <p className="text-pretty leading-7 text-muted-foreground">
+                <p className="leading-7 text-pretty text-muted-foreground">
                   {item}
                 </p>
               </CardContent>

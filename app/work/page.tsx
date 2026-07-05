@@ -4,10 +4,9 @@ import { ArrowRight01Icon } from "@hugeicons/core-free-icons"
 import { HugeiconsIcon } from "@hugeicons/react"
 
 import { SessionCards } from "@/components/session-cards"
-import { buttonVariants } from "@/components/ui/button"
+import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
 import { impactStats, siteLinks } from "@/lib/site-data"
-import { cn } from "@/lib/utils"
 
 export const metadata: Metadata = {
   title: "Work",
@@ -26,31 +25,32 @@ export default function WorkPage() {
           </h1>
           <p className="max-w-3xl text-base leading-7 text-muted-foreground sm:text-lg">
             The Sukoon Within has conducted 16+ sessions across online and
-            offline formats, reaching more than 1,000 young minds through
-            mental health education and community-led awareness.
+            offline formats, reaching more than 1,000 young minds through mental
+            health education and community-led awareness.
           </p>
-          <Link
-            href={siteLinks.linkedin}
-            target="_blank"
-            rel="noreferrer"
-            className={cn(
-              buttonVariants({ variant: "outline", size: "lg" }),
-              "w-fit"
-            )}
+          <Button
+            variant="outline"
+            size="lg"
+            className="w-fit"
+            render={
+              <Link
+                href={siteLinks.linkedin}
+                target="_blank"
+                rel="noreferrer"
+              />
+            }
+            nativeButton={false}
           >
             View public updates
             <HugeiconsIcon icon={ArrowRight01Icon} data-icon="inline-end" />
-          </Link>
+          </Button>
         </div>
       </section>
 
       <section className="border-y bg-muted/30">
         <div className="mx-auto grid max-w-7xl gap-4 px-4 py-8 sm:px-6 md:grid-cols-4 lg:px-8">
           {impactStats.map((stat) => (
-            <Card
-              key={stat.label}
-              className="gap-2 rounded-3xl p-5"
-            >
+            <Card key={stat.label} className="gap-2 rounded-3xl p-5">
               <p className="font-mono text-2xl font-semibold">{stat.value}</p>
               <p className="text-sm font-medium">{stat.label}</p>
               <p className="text-sm leading-6 text-muted-foreground">
@@ -65,15 +65,15 @@ export default function WorkPage() {
         <div className="grid gap-4 md:grid-cols-[0.8fr_1.2fr]">
           <div className="flex flex-col gap-3">
             <p className="text-sm font-medium text-primary">Sessions</p>
-            <h2 className="font-heading text-pretty text-3xl leading-tight font-semibold sm:text-4xl">
+            <h2 className="font-heading text-3xl leading-tight font-semibold text-pretty sm:text-4xl">
               A few sessions from the ground.
             </h2>
           </div>
           <div className="flex flex-col gap-5 text-base leading-7 text-muted-foreground">
             <p>
-              The work began with one belief: mental health education belongs
-              to every child, not only the privileged few. The team has shown up
-              in community spaces, on screens, and in rooms where these
+              The work began with one belief: mental health education belongs to
+              every child, not only the privileged few. The team has shown up in
+              community spaces, on screens, and in rooms where these
               conversations are often missing.
             </p>
             <p>
@@ -100,10 +100,14 @@ export default function WorkPage() {
               locations, teams, and session records are ready.
             </p>
           </div>
-          <Link href="/connect" className={cn(buttonVariants({ size: "lg" }))}>
+          <Button
+            size="lg"
+            render={<Link href="/connect" />}
+            nativeButton={false}
+          >
             Connect with us
             <HugeiconsIcon icon={ArrowRight01Icon} data-icon="inline-end" />
-          </Link>
+          </Button>
         </div>
       </section>
     </div>

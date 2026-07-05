@@ -4,10 +4,9 @@ import { ArrowRight01Icon } from "@hugeicons/core-free-icons"
 import { HugeiconsIcon } from "@hugeicons/react"
 
 import { Badge } from "@/components/ui/badge"
-import { buttonVariants } from "@/components/ui/button"
+import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { joinRoles, siteLinks } from "@/lib/site-data"
-import { cn } from "@/lib/utils"
 
 export const metadata: Metadata = {
   title: "Join",
@@ -30,25 +29,28 @@ export default function JoinPage() {
               partner spaces.
             </p>
           </div>
-          <Link
-            href={siteLinks.googleForm}
-            target="_blank"
-            rel="noreferrer"
-            className={cn(buttonVariants({ size: "lg" }), "w-fit")}
+          <Button
+            size="lg"
+            className="w-fit"
+            render={
+              <Link
+                href={siteLinks.googleForm}
+                target="_blank"
+                rel="noreferrer"
+              />
+            }
+            nativeButton={false}
           >
             Open application form
             <HugeiconsIcon icon={ArrowRight01Icon} data-icon="inline-end" />
-          </Link>
+          </Button>
         </div>
       </section>
 
       <section className="border-y bg-muted/30">
         <div className="mx-auto grid max-w-7xl gap-4 px-4 py-12 sm:px-6 md:grid-cols-2 lg:px-8">
           {joinRoles.map((role) => (
-            <Card
-              key={role.title}
-              className="rounded-4xl p-6"
-            >
+            <Card key={role.title} className="rounded-4xl p-6">
               <CardContent className="p-0">
                 <h2 className="text-2xl font-semibold">{role.title}</h2>
                 <p className="mt-3 leading-7 text-muted-foreground">
@@ -78,15 +80,21 @@ export default function JoinPage() {
             and Outreach & Networking Intern applications.
           </p>
         </div>
-        <Link
-          href={siteLinks.googleForm}
-          target="_blank"
-          rel="noreferrer"
-          className={cn(buttonVariants({ variant: "outline", size: "lg" }))}
+        <Button
+          variant="outline"
+          size="lg"
+          render={
+            <Link
+              href={siteLinks.googleForm}
+              target="_blank"
+              rel="noreferrer"
+            />
+          }
+          nativeButton={false}
         >
           Send my application
           <HugeiconsIcon icon={ArrowRight01Icon} data-icon="inline-end" />
-        </Link>
+        </Button>
       </section>
     </div>
   )

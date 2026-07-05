@@ -3,7 +3,7 @@ import { ArrowRight01Icon } from "@hugeicons/core-free-icons"
 import { HugeiconsIcon } from "@hugeicons/react"
 
 import { HeroCarousel } from "@/components/hero-carousel"
-import { buttonVariants } from "@/components/ui/button"
+import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import {
   impactStats,
@@ -27,18 +27,28 @@ export default function Page() {
             find community-led support.
           </p>
           <div className="flex flex-col justify-center gap-3 sm:flex-row">
-            <Link href="/join" className={cn(buttonVariants({ size: "lg" }))}>
+            <Button
+              size="lg"
+              render={<Link href="/join" />}
+              nativeButton={false}
+            >
               Join the movement
               <HugeiconsIcon icon={ArrowRight01Icon} data-icon="inline-end" />
-            </Link>
-            <Link
-              href={siteLinks.googleForm}
-              target="_blank"
-              rel="noreferrer"
-              className={cn(buttonVariants({ variant: "outline", size: "lg" }))}
+            </Button>
+            <Button
+              variant="outline"
+              size="lg"
+              render={
+                <Link
+                  href={siteLinks.googleForm}
+                  target="_blank"
+                  rel="noreferrer"
+                />
+              }
+              nativeButton={false}
             >
               Apply for internship
-            </Link>
+            </Button>
           </div>
         </div>
         <HeroCarousel />
@@ -138,13 +148,15 @@ export default function Page() {
               </Card>
             ))}
           </div>
-          <Link
-            href="/work"
-            className={cn(buttonVariants({ variant: "outline" }), "w-fit")}
+          <Button
+            variant="outline"
+            className="w-fit"
+            render={<Link href="/work" />}
+            nativeButton={false}
           >
             See the work
             <HugeiconsIcon icon={ArrowRight01Icon} data-icon="inline-end" />
-          </Link>
+          </Button>
         </div>
       </section>
 
@@ -159,10 +171,10 @@ export default function Page() {
             interns who want to build meaningful mental health awareness work.
           </p>
         </div>
-        <Link href="/join" className={cn(buttonVariants({ size: "lg" }))}>
+        <Button size="lg" render={<Link href="/join" />} nativeButton={false}>
           Join us
           <HugeiconsIcon icon={ArrowRight01Icon} data-icon="inline-end" />
-        </Link>
+        </Button>
       </section>
     </div>
   )

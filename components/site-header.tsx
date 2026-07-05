@@ -1,9 +1,8 @@
 import Link from "next/link"
 
 import { BrandMark } from "@/components/brand-mark"
-import { buttonVariants } from "@/components/ui/button"
+import { Button } from "@/components/ui/button"
 import { navItems } from "@/lib/site-data"
-import { cn } from "@/lib/utils"
 
 export function SiteHeader() {
   return (
@@ -11,15 +10,14 @@ export function SiteHeader() {
       <div className="mx-auto flex max-w-7xl flex-col gap-4 px-4 py-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between gap-4">
           <BrandMark />
-          <Link
-            href="/join"
-            className={cn(
-              buttonVariants({ size: "sm" }),
-              "hidden sm:inline-flex"
-            )}
+          <Button
+            size="sm"
+            className="hidden sm:inline-flex"
+            render={<Link href="/join" />}
+            nativeButton={false}
           >
             Join us
-          </Link>
+          </Button>
         </div>
         <nav
           aria-label="Main navigation"

@@ -5,7 +5,7 @@ import Link from "next/link"
 import { ArrowRight01Icon } from "@hugeicons/core-free-icons"
 import { HugeiconsIcon } from "@hugeicons/react"
 
-import { Button, buttonVariants } from "@/components/ui/button"
+import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import {
   Dialog,
@@ -18,7 +18,6 @@ import {
 } from "@/components/ui/dialog"
 import { ScrollArea } from "@/components/ui/scroll-area"
 import { sessionPosts } from "@/lib/site-data"
-import { cn } from "@/lib/utils"
 
 export function SessionCards() {
   return (
@@ -55,21 +54,20 @@ export function SessionCards() {
                 >
                   Read more
                 </DialogTrigger>
-                <Link
-                  href={post.href}
-                  target="_blank"
-                  rel="noreferrer"
-                  className={cn(
-                    buttonVariants({ variant: "link" }),
-                    "w-fit px-0"
-                  )}
+                <Button
+                  variant="link"
+                  className="w-fit px-0"
+                  render={
+                    <Link href={post.href} target="_blank" rel="noreferrer" />
+                  }
+                  nativeButton={false}
                 >
                   LinkedIn post
                   <HugeiconsIcon
                     icon={ArrowRight01Icon}
                     data-icon="inline-end"
                   />
-                </Link>
+                </Button>
               </div>
             </CardContent>
           </Card>
@@ -99,18 +97,17 @@ export function SessionCards() {
               </div>
             </ScrollArea>
             <DialogFooter className="shrink-0 border-t px-5 py-4 sm:px-6">
-              <Link
-                href={post.href}
-                target="_blank"
-                rel="noreferrer"
-                className={cn(
-                  buttonVariants({ size: "lg" }),
-                  "w-full sm:w-fit"
-                )}
+              <Button
+                size="lg"
+                className="w-full sm:w-fit"
+                render={
+                  <Link href={post.href} target="_blank" rel="noreferrer" />
+                }
+                nativeButton={false}
               >
                 Read on LinkedIn
                 <HugeiconsIcon icon={ArrowRight01Icon} data-icon="inline-end" />
-              </Link>
+              </Button>
             </DialogFooter>
           </DialogContent>
         </Dialog>

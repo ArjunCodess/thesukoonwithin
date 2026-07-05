@@ -5,7 +5,7 @@ import { Linkedin01Icon } from "@hugeicons/core-free-icons"
 import { HugeiconsIcon } from "@hugeicons/react"
 
 import { Badge } from "@/components/ui/badge"
-import { buttonVariants } from "@/components/ui/button"
+import { Button } from "@/components/ui/button"
 import {
   Card,
   CardContent,
@@ -14,7 +14,6 @@ import {
   CardTitle,
 } from "@/components/ui/card"
 import { missionCards, teamMembers } from "@/lib/site-data"
-import { cn } from "@/lib/utils"
 
 export const metadata: Metadata = {
   title: "About",
@@ -171,9 +170,9 @@ export default function AboutPage() {
             No peace is better than the peace within.
           </h2>
         </div>
-        <Link href="/join" className={cn(buttonVariants({ size: "lg" }))}>
+        <Button size="lg" render={<Link href="/join" />} nativeButton={false}>
           Join us now
-        </Link>
+        </Button>
       </section>
     </div>
   )
