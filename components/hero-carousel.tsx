@@ -10,19 +10,24 @@ import {
   CarouselContent,
   CarouselItem,
 } from "@/components/ui/carousel"
-import { sessionPosts } from "@/lib/site-data"
+import { heroImages } from "@/lib/site-data"
 
 export function HeroCarousel() {
   const progressNode = React.useRef<HTMLDivElement>(null)
   const animationName = React.useRef("")
   const timeoutId = React.useRef(0)
   const rafId = React.useRef(0)
+  const resumeTimeoutId = React.useRef(0)
   const [api, setApi] = React.useState<CarouselApi>()
-  const autoplay = React.useRef(
-    Autoplay({
-      delay: 3000,
-      stopOnMouseEnter: true,
-    })
+  const [showProgress, setShowProgress] = React.useState(true)
+  const plugins = React.useMemo(
+    () => [
+      Autoplay({
+        delay: 3000,
+        stopOnInteraction: true,
+      }),
+    ],
+    []
   )
 
   const startProgress = React.useCallback((timeUntilNext: number | null) => {
@@ -49,18 +54,48 @@ export function HeroCarousel() {
     const autoplayPlugin = api?.plugins()?.autoplay
     if (!api || !autoplayPlugin) return
 
-    api
-      .on("autoplay:timerset", () =>
+    const handleTimerSet = () => {
+      if (showProgress) {
         startProgress(autoplayPlugin.timeUntilNext())
-      )
+      }
+    }
 
-    startProgress(autoplayPlugin.timeUntilNext())
-  }, [api, startProgress])
+    const handleInteraction = () => {
+      window.clearTimeout(resumeTimeoutId.current)
+      setShowProgress(false)
+      autoplayPlugin.stop()
+    }
+
+    const handleInteractionEnd = () => {
+      window.clearTimeout(resumeTimeoutId.current)
+      resumeTimeoutId.current = window.setTimeout(() => {
+        setShowProgress(true)
+        autoplayPlugin.play()
+      }, 1000)
+    }
+
+    api
+      .on("autoplay:timerset", handleTimerSet)
+      .on("pointerDown", handleInteraction)
+      .on("pointerUp", handleInteractionEnd)
+
+    if (showProgress) {
+      startProgress(autoplayPlugin.timeUntilNext())
+    }
+
+    return () => {
+      api
+        .off("autoplay:timerset", handleTimerSet)
+        .off("pointerDown", handleInteraction)
+        .off("pointerUp", handleInteractionEnd)
+    }
+  }, [api, showProgress, startProgress])
 
   React.useEffect(() => {
     return () => {
       window.cancelAnimationFrame(rafId.current)
       window.clearTimeout(timeoutId.current)
+      window.clearTimeout(resumeTimeoutId.current)
     }
   }, [])
 
@@ -72,39 +107,34 @@ export function HeroCarousel() {
           align: "center",
           loop: true,
         }}
-        plugins={[autoplay.current]}
+        plugins={plugins}
         className="w-full"
       >
         <CarouselContent className="-ml-3 md:-ml-5">
-          {sessionPosts.map((post) => (
-            <CarouselItem key={post.image} className="pl-3 md:pl-5">
+          {heroImages.map((image) => (
+            <CarouselItem key={image.src} className="pl-3 md:pl-5">
               <div className="relative aspect-[16/10] overflow-hidden rounded-4xl border bg-muted shadow-sm sm:aspect-[16/8]">
                 <Image
-                  src={post.image}
-                  alt={`${post.title} session photo`}
+                  src={image.src}
+                  alt={image.alt}
                   fill
                   sizes="(max-width: 768px) 100vw, 1152px"
                   className="object-cover"
-                  priority={post.image === sessionPosts[0].image}
+                  priority={image.src === heroImages[0].src}
                 />
-                <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-foreground/70 to-transparent p-5 text-left text-primary-foreground sm:p-6">
-                  <p className="text-sm font-medium opacity-90">
-                    {post.location} - {post.date}
-                  </p>
-                  <h2 className="mt-1 max-w-2xl text-xl leading-tight font-semibold sm:text-2xl">
-                    {post.title}
-                  </h2>
-                </div>
               </div>
             </CarouselItem>
           ))}
         </CarouselContent>
       </Carousel>
 
-      <div className="mx-auto h-1.5 w-full max-w-xl overflow-hidden rounded-full bg-muted">
+      <div
+        className="mx-auto h-1.5 w-full max-w-xl overflow-hidden rounded-full bg-muted transition-opacity duration-200 data-[hidden=true]:opacity-0"
+        data-hidden={!showProgress}
+      >
         <div
           ref={progressNode}
-          className="h-full origin-left animate-autoplay-progress rounded-full bg-primary"
+          className="animate-autoplay-progress h-full origin-left rounded-full bg-primary"
         />
       </div>
     </div>
