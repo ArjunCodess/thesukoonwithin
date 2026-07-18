@@ -329,6 +329,48 @@ export const galleryImages = [
     alt: "A shared moment from The Sukoon Within community gallery",
     source: "Community gallery",
   },
+  {
+    src: "/gallery/WhatsApp Image 2026-07-18 at 7.40.30 PM (1).jpeg",
+    width: 852,
+    height: 378,
+    alt: "A facilitator speaking with children during a classroom session",
+    source: "Community gallery",
+  },
+  {
+    src: "/gallery/WhatsApp Image 2026-07-18 at 7.40.30 PM.jpeg",
+    width: 846,
+    height: 378,
+    alt: "Children taking part in an interactive classroom activity",
+    source: "Community gallery",
+  },
+  {
+    src: "/gallery/WhatsApp Image 2026-07-18 at 7.44.40 PM (1).jpeg",
+    width: 1600,
+    height: 720,
+    alt: "Volunteers and children working together at Seva Bharti Gandhi Ashram",
+    source: "Community gallery",
+  },
+  {
+    src: "/gallery/WhatsApp Image 2026-07-18 at 7.44.40 PM.jpeg",
+    width: 1600,
+    height: 720,
+    alt: "Children and volunteers gathered after a community session at Gandhi Ashram",
+    source: "Community gallery",
+  },
+  {
+    src: "/gallery/WhatsApp Image 2026-07-18 at 7.44.41 PM (1).jpeg",
+    width: 1600,
+    height: 720,
+    alt: "Children raising their hands during a group conversation",
+    source: "Community gallery",
+  },
+  {
+    src: "/gallery/WhatsApp Image 2026-07-18 at 7.44.41 PM.jpeg",
+    width: 720,
+    height: 1600,
+    alt: "Children adding colourful fingerprints and messages to a shared activity sheet",
+    source: "Community gallery",
+  },
 ] as const
 
 export const joinRoles = [
