@@ -21,14 +21,16 @@ export default function JoinPage() {
       <section className="mx-auto max-w-7xl px-4 py-12 sm:px-6 md:py-16 lg:px-8">
         <div className="flex flex-col gap-6">
           <div className="flex max-w-4xl flex-col gap-4">
+            <p className="text-sm font-medium text-primary">Join us</p>
             <h1 className="font-heading text-4xl leading-tight font-semibold tracking-normal sm:text-5xl">
               Join the team building safer mental health conversations.
             </h1>
             <p className="text-base leading-7 text-muted-foreground sm:text-lg">
               The Sukoon Within has two application paths: one for internship
-              roles and one for contributors in research, on-site volunteering,
-              event planning, social media management, and design. The
-              application buttons are listed at the end of this page.
+              roles, one for Mental Health Ambassadors, and one for contributors
+              in research, on-site volunteering, event planning, social media
+              management, and design. The application buttons are listed at the
+              end of this page.
             </p>
           </div>
         </div>
@@ -72,12 +74,12 @@ export default function JoinPage() {
             Choose the form that matches your role.
           </h2>
           <p className="max-w-2xl leading-7 text-muted-foreground">
-            Both forms open in Google Forms. Internship applicants should use
-            the internship form; researchers, volunteers, event planners, social
-            media managers, and designers should use the contributor form.
+            Each form opens in Google Forms. Choose the ambassador form for
+            Mental Health Ambassador roles, the internship form for internship
+            roles, or the contributor form for the remaining roles.
           </p>
         </div>
-        <div className="grid gap-4 md:grid-cols-2">
+        <div className="grid gap-4 md:grid-cols-3">
           {applicationForms.map((form) => (
             <Card key={form.href} className="rounded-4xl p-6">
               <CardContent className="flex h-full flex-col gap-5 p-0">
