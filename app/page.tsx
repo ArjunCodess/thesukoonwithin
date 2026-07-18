@@ -5,7 +5,7 @@ import { HugeiconsIcon } from "@hugeicons/react"
 import { HeroCarousel } from "@/components/hero-carousel"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
-import { impactStats, missionCards, workHighlights } from "@/lib/site-data"
+import { impactStats, missionCards } from "@/lib/site-data"
 import { cn } from "@/lib/utils"
 
 export default function Page() {
@@ -113,41 +113,6 @@ export default function Page() {
               </CardContent>
             </Card>
           ))}
-        </div>
-      </section>
-
-      <section className="bg-muted/30">
-        <div className="mx-auto grid max-w-7xl gap-8 px-4 py-14 sm:px-6 lg:px-8">
-          <div className="flex flex-col gap-3">
-            <p className="text-sm font-medium text-primary">Work</p>
-            <h2 className="font-heading text-3xl leading-tight font-semibold sm:text-4xl">
-              Showing up where conversations were missing.
-            </h2>
-          </div>
-          <div className="grid gap-4 md:grid-cols-2">
-            {workHighlights.slice(0, 4).map((item) => (
-              <Card key={item.title} className="rounded-4xl p-6">
-                <CardContent className="p-0">
-                  <p className="text-sm font-medium text-muted-foreground">
-                    {item.meta}
-                  </p>
-                  <h3 className="mt-3 text-xl font-semibold">{item.title}</h3>
-                  <p className="mt-3 leading-7 text-muted-foreground">
-                    {item.body}
-                  </p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-          <Button
-            variant="outline"
-            className="w-fit"
-            render={<Link href="/work" />}
-            nativeButton={false}
-          >
-            See the work
-            <HugeiconsIcon icon={ArrowRight01Icon} data-icon="inline-end" />
-          </Button>
         </div>
       </section>
 

@@ -12,7 +12,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card"
-import { missionCards, teamMembers } from "@/lib/site-data"
+import { teamMembers } from "@/lib/site-data"
 
 export const metadata: Metadata = {
   title: "About",
@@ -133,42 +133,13 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="mx-auto grid max-w-7xl gap-8 px-4 py-14 sm:px-6 lg:px-8">
-        <div className="grid gap-4 md:grid-cols-[0.85fr_1fr]">
-          <div className="flex flex-col gap-3">
-            <p className="text-sm font-medium text-primary">How we work</p>
-            <h2 className="font-heading text-3xl leading-tight font-semibold sm:text-4xl">
-              Awareness without pretending to be clinical care.
-            </h2>
-          </div>
-          <p className="text-base leading-7 text-muted-foreground">
-            Aligned with SDG 3, the organization collaborates with NGOs,
-            corporates, and communities to make mental health awareness more
-            accessible. The work is educational and community-led, designed to
-            create language, listening, and safer spaces.
+      <section className="mx-auto max-w-7xl px-4 py-14 sm:px-6 md:py-18 lg:px-8">
+        <blockquote className="border-y border-primary/30 py-10 text-center sm:py-12">
+          <p className="text-sm font-medium text-primary">A thought we carry</p>
+          <p className="mx-auto mt-4 max-w-3xl font-heading text-3xl leading-tight font-semibold text-balance sm:text-4xl">
+            “No peace is better than the peace within.”
           </p>
-        </div>
-        <div className="grid gap-4 md:grid-cols-3">
-          {missionCards.map((card) => (
-            <Card key={card.title} className="rounded-4xl p-6">
-              <CardContent className="p-0">
-                <h3 className="text-lg font-semibold">{card.title}</h3>
-                <p className="mt-3 leading-7 text-muted-foreground">
-                  {card.body}
-                </p>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
-      </section>
-
-      <section className="mx-auto grid max-w-7xl gap-6 px-4 pb-14 sm:px-6 lg:px-8">
-        <div className="flex flex-col gap-3">
-          <p className="text-sm font-medium text-primary">Thank you</p>
-          <h2 className="font-heading text-3xl leading-tight font-semibold">
-            No peace is better than the peace within.
-          </h2>
-        </div>
+        </blockquote>
       </section>
     </div>
   )
