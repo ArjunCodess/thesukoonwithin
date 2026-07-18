@@ -18,13 +18,21 @@ import {
 } from "@/components/ui/dialog"
 import { ScrollArea } from "@/components/ui/scroll-area"
 import { sessionPosts } from "@/lib/site-data"
+import { cn } from "@/lib/utils"
 
 export function SessionCards() {
   return (
     <div className="grid gap-5 md:grid-cols-2">
-      {sessionPosts.map((post) => (
+      {sessionPosts.map((post, index) => (
         <Dialog key={post.href}>
-          <Card className="flex min-h-full flex-col gap-0 overflow-hidden rounded-3xl p-0">
+          <Card
+            className={cn(
+              "flex min-h-full flex-col gap-0 overflow-hidden rounded-3xl p-0",
+              sessionPosts.length % 2 === 1 && index === sessionPosts.length - 1
+                ? "md:col-span-2 md:mx-auto md:w-[calc(50%_-_0.625rem)]"
+                : ""
+            )}
+          >
             <div className="relative h-56 shrink-0 overflow-hidden bg-muted sm:h-64 md:h-72">
               <Image
                 src={post.image}
@@ -91,6 +99,20 @@ export function SessionCards() {
                 />
               </div>
               <div className="mt-5 flex flex-col gap-4 text-base leading-7 text-muted-foreground">
+                {post.speaker && (
+                  <p>
+                    Session led by{" "}
+                    <Link
+                      href={post.speaker.href}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="font-medium text-primary underline underline-offset-4"
+                    >
+                      {post.speaker.name}
+                    </Link>
+                    .
+                  </p>
+                )}
                 {post.content.map((paragraph) => (
                   <p key={paragraph}>{paragraph}</p>
                 ))}

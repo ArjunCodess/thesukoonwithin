@@ -90,22 +90,21 @@ export default function WorkPage() {
       <section className="bg-muted/30">
         <div className="mx-auto grid max-w-7xl gap-6 px-4 py-12 sm:px-6 md:grid-cols-[1fr_auto] md:items-center lg:px-8">
           <div className="flex flex-col gap-3">
-            <p className="text-sm font-medium text-primary">Chapters</p>
+            <p className="text-sm font-medium text-primary">Chapter cities</p>
             <h2 className="font-heading text-3xl leading-tight font-semibold">
-              Chapters and international work are coming later.
+              Find the cities where our conversations are growing.
             </h2>
             <p className="max-w-2xl leading-7 text-muted-foreground">
-              The first version of this website does not list international
-              chapters. Future chapter pages can be added once the official
-              locations, teams, and session records are ready.
+              Explore the cities where The Sukoon Within has brought mental
+              health education into local communities.
             </p>
           </div>
           <Button
             size="lg"
-            render={<Link href="/connect" />}
+            render={<Link href="/chapters" />}
             nativeButton={false}
           >
-            Connect with us
+            Explore chapter cities
             <HugeiconsIcon icon={ArrowRight01Icon} data-icon="inline-end" />
           </Button>
         </div>
