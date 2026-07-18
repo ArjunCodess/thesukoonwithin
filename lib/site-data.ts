@@ -10,6 +10,8 @@ export const siteLinks = {
     "https://docs.google.com/forms/d/e/1FAIpQLSc3yn3runhY5ByXnGcYY8pvGVMkb3q-sYDzdkb7dssVpE5kcg/viewform",
   contributorForm:
     "https://docs.google.com/forms/d/e/1FAIpQLScN_CYfdDJ2KOYSgsSMJwmw466kIsc4u29UEYfldnuiGSRvOQ/viewform",
+  ambassadorForm:
+    "https://docs.google.com/forms/d/e/1FAIpQLSeFDMQyzEtNhPTABxq6cVxuSFITpyoBjgnPlQqeL-JwXKhJvA/viewform",
   instagram: "https://www.instagram.com/thesukoonwithin_/",
   linkedin: "https://www.linkedin.com/company/the-sukoon-within/",
   email: "thesukoonwithin@gmail.com",
@@ -19,6 +21,8 @@ export const navItems = [
   { href: "/", label: "Home" },
   { href: "/about", label: "About" },
   { href: "/work", label: "Work" },
+  { href: "/chapters", label: "Chapters" },
+  { href: "/gallery", label: "Gallery" },
   { href: "/join", label: "Join" },
   { href: "/connect", label: "Connect" },
 ] as const
@@ -84,7 +88,43 @@ export const workHighlights = [
   },
 ] as const
 
-export const sessionPosts = [
+export type SessionPost = {
+  title: string
+  author: string
+  location: string
+  date: string
+  image: string
+  href: string
+  summary: string
+  speaker?: {
+    name: string
+    href: string
+  }
+  content: string[]
+}
+
+export const sessionPosts: SessionPost[] = [
+  {
+    title: "Trusting Your Adults Session",
+    author: "The Sukoon Within",
+    location: "Abu Dhabi, UAE",
+    date: "International session",
+    image: "/work/angela.jpeg",
+    href: "https://www.linkedin.com/posts/abu-dhabi-global-chapter-ugcPost-7482796247053955072-APOq/",
+    summary:
+      'The Sukoon Within’s first international session helped children aged 7–12 recognize trusted adults and see asking for help as a strength.',
+    speaker: {
+      name: "Angela M. Christo",
+      href: "https://www.linkedin.com/in/angela-m-christo-4ba1bb383/",
+    },
+    content: [
+      'A heartfelt thank you to Angela M. Christo for leading our recent session on “Trusting Your Adults,” empowering young minds to recognize trusted adults, seek support, and understand that asking for help is a sign of strength.',
+      "This was our first international session, where kids aged 7–12 learned that it’s okay to ask for help and that they’re never alone.",
+      "Together, we are building safer spaces where every child feels heard, supported, and never alone.",
+      "Grateful for the trust, and excited for what’s next. 🕊️",
+      "Huge shoutout to Angela and her team for carrying it out wonderfully!! 🫶",
+    ],
+  },
   {
     title: "Shoishob Foundation session",
     author: "Soumili Das",
@@ -147,6 +187,29 @@ export const sessionPosts = [
   },
 ] as const
 
+export const chapterCities = [
+  {
+    city: "Abu Dhabi",
+    country: "United Arab Emirates",
+    body: "Our first session beyond India gave children aged 7–12 one essential lesson: know which adults you can trust, and never feel ashamed to ask them for help.",
+  },
+  {
+    city: "Bhopal",
+    country: "India",
+    body: "Children explored what friendship asks of us: empathy, trust, faithfulness, and the courage to show up for one another.",
+  },
+  {
+    city: "Jaipur",
+    country: "India",
+    body: "Creative activities and open conversation helped children meet their emotions with curiosity instead of fear or embarrassment.",
+  },
+  {
+    city: "Kolkata",
+    country: "India",
+    body: "At Shoishob Foundation, children named their emotions, reflected on their triggers, and practiced simple ways to respond when feelings become difficult.",
+  },
+] as const
+
 export const heroImages = [
   {
     src: "/work/soumili.jpg",
@@ -174,7 +237,107 @@ export const heroImages = [
   },
 ] as const
 
+export const galleryImages = [
+  {
+    src: "/gallery/WhatsApp Image 2026-07-15 at 11.30.42 PM.jpeg",
+    width: 3024,
+    height: 4032,
+    alt: "A community moment from The Sukoon Within",
+    source: "Community gallery",
+  },
+  {
+    src: "/work/bhakti.jpg",
+    width: 2048,
+    height: 921,
+    alt: "A Mental Health Ambassador leading a session with students",
+    source: "Work sessions",
+  },
+  {
+    src: "/gallery/WhatsApp Image 2026-07-18 at 12.57.09 PM.jpeg",
+    width: 3024,
+    height: 4032,
+    alt: "Young people taking part in a Sukoon Within community session",
+    source: "Community gallery",
+  },
+  {
+    src: "/work/angela.jpeg",
+    width: 1280,
+    height: 960,
+    alt: "Angela M. Christo leading the Trusting Your Adults session",
+    source: "Work sessions",
+  },
+  {
+    src: "/gallery/WhatsApp Image 2026-07-18 at 12.57.58 PM (1).jpeg",
+    width: 960,
+    height: 1280,
+    alt: "A youth-led activity from The Sukoon Within gallery",
+    source: "Community gallery",
+  },
+  {
+    src: "/work/jaipur.jpg",
+    width: 947,
+    height: 712,
+    alt: "The Jaipur team conducting a session with children",
+    source: "Work sessions",
+  },
+  {
+    src: "/gallery/WhatsApp Image 2026-07-18 at 12.57.58 PM.jpeg",
+    width: 960,
+    height: 1280,
+    alt: "Participants sharing a moment during a community activity",
+    source: "Community gallery",
+  },
+  {
+    src: "/work/pradhi.jpg",
+    width: 1600,
+    height: 720,
+    alt: "Children participating in a friendship and empathy session in Bhopal",
+    source: "Work sessions",
+  },
+  {
+    src: "/gallery/WhatsApp Image 2026-07-18 at 12.57.59 PM (1).jpeg",
+    width: 960,
+    height: 1280,
+    alt: "A candid moment from a Sukoon Within session",
+    source: "Community gallery",
+  },
+  {
+    src: "/work/soumili.jpg",
+    width: 1280,
+    height: 720,
+    alt: "Soumili Das leading a mental health education session",
+    source: "Work sessions",
+  },
+  {
+    src: "/gallery/WhatsApp Image 2026-07-18 at 12.57.59 PM (2).jpeg",
+    width: 960,
+    height: 1280,
+    alt: "Children engaging in a Sukoon Within community activity",
+    source: "Community gallery",
+  },
+  {
+    src: "/work/harmanpreet.jpeg",
+    width: 1280,
+    height: 960,
+    alt: "Harmanpreet leading a mental health awareness session",
+    source: "Work sessions",
+  },
+  {
+    src: "/gallery/WhatsApp Image 2026-07-18 at 12.58.00 PM.jpeg",
+    width: 960,
+    height: 1280,
+    alt: "A shared moment from The Sukoon Within community gallery",
+    source: "Community gallery",
+  },
+] as const
+
 export const joinRoles = [
+  {
+    title: "Mental Health Ambassador",
+    form: "Ambassador form",
+    body: "Lead thoughtful mental health education sessions in your community and help more young people find language for what they feel.",
+    focus: ["Session facilitation", "Community outreach", "Youth support"],
+  },
   {
     title: "Social Media Intern",
     form: "Internship form",
@@ -220,6 +383,13 @@ export const joinRoles = [
 ] as const
 
 export const applicationForms = [
+  {
+    title: "Ambassador applications",
+    href: siteLinks.ambassadorForm,
+    body: "Use this form to apply as a Mental Health Ambassador and lead youth-focused conversations in your community.",
+    cta: "Apply as ambassador",
+    roles: ["Mental Health Ambassador"],
+  },
   {
     title: "Internship applications",
     href: siteLinks.internshipForm,
