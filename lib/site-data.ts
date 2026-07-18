@@ -371,6 +371,27 @@ export const galleryImages = [
     alt: "Children adding colourful fingerprints and messages to a shared activity sheet",
     source: "Community gallery",
   },
+  {
+    src: "/gallery/IMG_5781.jpg",
+    width: 3024,
+    height: 4032,
+    alt: "A volunteer and child holding a mental well-being activity sheet",
+    source: "Community gallery",
+  },
+  {
+    src: "/gallery/IMG_5783.jpg",
+    width: 3024,
+    height: 4032,
+    alt: "A volunteer supporting a child during a classroom well-being activity",
+    source: "Community gallery",
+  },
+  {
+    src: "/gallery/IMG_5794.jpg",
+    width: 3024,
+    height: 4032,
+    alt: "A volunteer sharing a cheerful moment with two children after an activity",
+    source: "Community gallery",
+  },
 ] as const
 
 export const joinRoles = [
