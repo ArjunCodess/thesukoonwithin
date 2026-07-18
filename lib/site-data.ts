@@ -141,16 +141,31 @@ export const sessionPosts: SessionPost[] = [
     ],
   },
   {
+    title: "Friendship through stories and art session",
+    author: "Harmanpreet Kaur Saini",
+    location: "Mumbai",
+    date: "Recent session",
+    image: "/work/harmanpreet.jpeg",
+    href: "https://www.linkedin.com/posts/the-sukoon-within_we-recently-hosted-a-beautiful-session-led-activity-7452599490466988032-Wrxv/",
+    summary:
+      "A Mumbai session where children explored friendship through playful activities, stories, laughter, and painting.",
+    content: [
+      "Harmanpreet Kaur Saini led a warm, activity-based session in Mumbai where children explored what friendship means to them.",
+      "Stories, laughter, games, and painting made the conversation feel natural and gave the children room to participate in their own way.",
+      "The session reflected why safe spaces matter: children learn and open up when emotional education feels welcoming, creative, and close to everyday life.",
+    ],
+  },
+  {
     title: "Emotions and self-control session",
     author: "Bhakti",
-    location: "Coaching institute",
+    location: "Pune",
     date: "Recent session",
     image: "/work/bhakti.jpg",
     href: "https://www.linkedin.com/feed/update/urn:li:activity:7455443319901306880/",
     summary:
-      "A Mental Health Ambassador session about emotions, expression, and self-control with students at a coaching institute.",
+      "A Pune session about emotions, expression, and self-control with students at a coaching institute.",
     content: [
-      "Bhakti, a Mental Health Ambassador at The Sukoon Within, conducted a mental health session at a coaching institute she knew.",
+      "Bhakti, a Mental Health Ambassador at The Sukoon Within, conducted a mental health session at a coaching institute in Pune.",
       "The session focused on emotions, expression, and self-control. While explaining these ideas, she found herself reflecting on her own reactions too: the moments she overreacted and the moments she managed to pause.",
       "That made the session feel less like teaching from a distance and more like a real conversation. It carried the spirit of The Sukoon Within: learning alongside the people in the room.",
     ],
@@ -207,6 +222,16 @@ export const chapterCities = [
     city: "Kolkata",
     country: "India",
     body: "At Shoishob Foundation, children named their emotions, reflected on their triggers, and practiced simple ways to respond when feelings become difficult.",
+  },
+  {
+    city: "Mumbai",
+    country: "India",
+    body: "Children explored friendship through stories, laughter, playful activities, and painting in a session led by Harmanpreet Kaur Saini.",
+  },
+  {
+    city: "Pune",
+    country: "India",
+    body: "A session led by Bhakti helped students think about emotions, expression, and the moments when they can pause before reacting.",
   },
 ] as const
 
