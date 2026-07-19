@@ -56,7 +56,7 @@ export default function ChaptersPage() {
             Want to build a chapter in your city?
           </h2>
           <p className="max-w-2xl leading-7 text-muted-foreground">
-            Apply as an On-site Volunteer through the Join page. You’ll help
+            Apply as a Mental Health Ambassador through the Join page. You’ll help
             organize local sessions, connect with schools and communities, and
             grow the chapter around your city’s needs.
           </p>
@@ -67,7 +67,7 @@ export default function ChaptersPage() {
           render={<Link href="/join" />}
           nativeButton={false}
         >
-          Apply as an on-site volunteer
+          Apply as a Mental Health Ambassador
           <HugeiconsIcon icon={ArrowRight01Icon} data-icon="inline-end" />
         </Button>
       </section>
