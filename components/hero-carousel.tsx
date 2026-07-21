@@ -31,6 +31,7 @@ export function HeroCarousel() {
   const [isVideoSlide, setIsVideoSlide] = React.useState(true)
   const [videoProgress, setVideoProgress] = React.useState(0)
   const [isMuted, setIsMuted] = React.useState(false)
+  const [volume, setVolume] = React.useState(1)
   const [isPlaybackBlocked, setIsPlaybackBlocked] = React.useState(false)
   const plugins = React.useMemo(
     () => [
@@ -190,26 +191,52 @@ export function HeroCarousel() {
                   api?.scrollNext()
                 }}
               />
-              <button
-                type="button"
-                aria-label={isMuted ? "Unmute video" : "Mute video"}
-                className="absolute top-4 right-4 z-10 grid size-10 place-items-center rounded-full border border-white/30 bg-black/45 text-white shadow-sm backdrop-blur-sm transition-colors hover:bg-black/60 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+              <div
+                className="absolute top-4 right-4 z-10 flex items-center gap-2"
                 onPointerDown={(event) => event.stopPropagation()}
-                onClick={() => {
-                  const muted = !isMuted
-                  setIsMuted(muted)
-
-                  if (videoNode.current) {
-                    videoNode.current.muted = muted
-                  }
-                }}
+                onPointerUp={(event) => event.stopPropagation()}
               >
-                <HugeiconsIcon
-                  icon={isMuted ? VolumeMute01Icon : VolumeHighIcon}
-                  strokeWidth={2}
-                  className="size-5"
-                />
-              </button>
+                <div className="flex h-10 items-center rounded-full border border-white/30 bg-black/45 px-3 shadow-sm backdrop-blur-sm">
+                  <input
+                    type="range"
+                    min="0"
+                    max="1"
+                    step="0.05"
+                    value={isMuted ? 0 : volume}
+                    aria-label="Video volume"
+                    className="h-1 w-20 cursor-pointer accent-white sm:w-24"
+                    onChange={(event) => {
+                      const nextVolume = Number(event.currentTarget.value)
+                      setVolume(nextVolume)
+                      setIsMuted(nextVolume === 0)
+
+                      if (videoNode.current) {
+                        videoNode.current.volume = nextVolume
+                        videoNode.current.muted = nextVolume === 0
+                      }
+                    }}
+                  />
+                </div>
+                <button
+                  type="button"
+                  aria-label={isMuted ? "Unmute video" : "Mute video"}
+                  className="grid size-10 place-items-center rounded-full border border-white/30 bg-black/45 text-white shadow-sm backdrop-blur-sm transition-colors hover:bg-black/60 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+                  onClick={() => {
+                    const muted = !isMuted
+                    setIsMuted(muted)
+
+                    if (videoNode.current) {
+                      videoNode.current.muted = muted
+                    }
+                  }}
+                >
+                  <HugeiconsIcon
+                    icon={isMuted ? VolumeMute01Icon : VolumeHighIcon}
+                    strokeWidth={2}
+                    className="size-5"
+                  />
+                </button>
+              </div>
               {isPlaybackBlocked && (
                 <button
                   type="button"
