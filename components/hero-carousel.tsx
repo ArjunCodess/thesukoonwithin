@@ -2,6 +2,12 @@
 
 import * as React from "react"
 import Image from "next/image"
+import {
+  PlayIcon,
+  VolumeHighIcon,
+  VolumeMute01Icon,
+} from "@hugeicons/core-free-icons"
+import { HugeiconsIcon } from "@hugeicons/react"
 import Autoplay from "embla-carousel-autoplay"
 
 import {
@@ -24,6 +30,8 @@ export function HeroCarousel() {
   const [showProgress, setShowProgress] = React.useState(true)
   const [isVideoSlide, setIsVideoSlide] = React.useState(true)
   const [videoProgress, setVideoProgress] = React.useState(0)
+  const [isMuted, setIsMuted] = React.useState(false)
+  const [isPlaybackBlocked, setIsPlaybackBlocked] = React.useState(false)
   const plugins = React.useMemo(
     () => [
       Autoplay({
@@ -33,6 +41,16 @@ export function HeroCarousel() {
     ],
     []
   )
+
+  const playVideo = React.useCallback(() => {
+    const video = videoNode.current
+    if (!video) return
+
+    void video
+      .play()
+      .then(() => setIsPlaybackBlocked(false))
+      .catch(() => setIsPlaybackBlocked(true))
+  }, [])
 
   const startProgress = React.useCallback((timeUntilNext: number | null) => {
     const node = progressNode.current
@@ -74,7 +92,7 @@ export function HeroCarousel() {
 
       if (api.selectedScrollSnap() === 0) {
         setShowProgress(true)
-        void videoNode.current?.play()
+        playVideo()
         return
       }
 
@@ -91,7 +109,7 @@ export function HeroCarousel() {
         setIsVideoSlide(true)
         setShowProgress(true)
         autoplayPlugin.stop()
-        void video?.play()
+        playVideo()
         return
       }
 
@@ -128,7 +146,7 @@ export function HeroCarousel() {
         .off("pointerUp", handleInteractionEnd)
         .off("select", handleSelect)
     }
-  }, [api, isVideoSlide, showProgress, startProgress])
+  }, [api, isVideoSlide, playVideo, showProgress, startProgress])
 
   React.useEffect(() => {
     return () => {
@@ -156,7 +174,7 @@ export function HeroCarousel() {
                 ref={videoNode}
                 src="/hero.mp4"
                 autoPlay
-                muted
+                muted={isMuted}
                 playsInline
                 preload="auto"
                 aria-label="The Sukoon Within community work"
@@ -172,6 +190,41 @@ export function HeroCarousel() {
                   api?.scrollNext()
                 }}
               />
+              <button
+                type="button"
+                aria-label={isMuted ? "Unmute video" : "Mute video"}
+                className="absolute top-4 right-4 z-10 grid size-10 place-items-center rounded-full border border-white/30 bg-black/45 text-white shadow-sm backdrop-blur-sm transition-colors hover:bg-black/60 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+                onPointerDown={(event) => event.stopPropagation()}
+                onClick={() => {
+                  const muted = !isMuted
+                  setIsMuted(muted)
+
+                  if (videoNode.current) {
+                    videoNode.current.muted = muted
+                  }
+                }}
+              >
+                <HugeiconsIcon
+                  icon={isMuted ? VolumeMute01Icon : VolumeHighIcon}
+                  strokeWidth={2}
+                  className="size-5"
+                />
+              </button>
+              {isPlaybackBlocked && (
+                <button
+                  type="button"
+                  className="absolute inset-0 z-[5] m-auto grid size-14 place-items-center rounded-full border border-white/30 bg-black/55 text-white shadow-md backdrop-blur-sm transition-transform hover:scale-105 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+                  aria-label="Play video with sound"
+                  onPointerDown={(event) => event.stopPropagation()}
+                  onClick={playVideo}
+                >
+                  <HugeiconsIcon
+                    icon={PlayIcon}
+                    strokeWidth={2}
+                    className="size-6"
+                  />
+                </button>
+              )}
             </div>
           </CarouselItem>
 
