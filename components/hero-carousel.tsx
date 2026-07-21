@@ -13,13 +13,17 @@ import {
 import { heroImages } from "@/lib/site-data"
 
 export function HeroCarousel() {
+  const videoNode = React.useRef<HTMLVideoElement>(null)
   const progressNode = React.useRef<HTMLDivElement>(null)
-  const animationName = React.useRef("")
+  const animationName = React.useRef("autoplay-progress")
   const timeoutId = React.useRef(0)
   const rafId = React.useRef(0)
   const resumeTimeoutId = React.useRef(0)
+  const isInteracting = React.useRef(false)
   const [api, setApi] = React.useState<CarouselApi>()
   const [showProgress, setShowProgress] = React.useState(true)
+  const [isVideoSlide, setIsVideoSlide] = React.useState(true)
+  const [videoProgress, setVideoProgress] = React.useState(0)
   const plugins = React.useMemo(
     () => [
       Autoplay({
@@ -34,10 +38,6 @@ export function HeroCarousel() {
     const node = progressNode.current
 
     if (!node || timeUntilNext === null) return
-
-    if (!animationName.current) {
-      animationName.current = window.getComputedStyle(node).animationName
-    }
 
     node.style.animationName = "none"
     node.style.transform = "translate3d(0,0,0)"
@@ -61,25 +61,63 @@ export function HeroCarousel() {
     }
 
     const handleInteraction = () => {
+      isInteracting.current = true
       window.clearTimeout(resumeTimeoutId.current)
       setShowProgress(false)
       autoplayPlugin.stop()
+      videoNode.current?.pause()
     }
 
     const handleInteractionEnd = () => {
+      isInteracting.current = false
       window.clearTimeout(resumeTimeoutId.current)
+
+      if (api.selectedScrollSnap() === 0) {
+        setShowProgress(true)
+        void videoNode.current?.play()
+        return
+      }
+
       resumeTimeoutId.current = window.setTimeout(() => {
         setShowProgress(true)
         autoplayPlugin.play()
       }, 1000)
     }
 
+    const handleSelect = () => {
+      const video = videoNode.current
+
+      if (api.selectedScrollSnap() === 0) {
+        setIsVideoSlide(true)
+        setShowProgress(true)
+        autoplayPlugin.stop()
+        void video?.play()
+        return
+      }
+
+      setIsVideoSlide(false)
+
+      if (video) {
+        video.pause()
+        video.currentTime = 0
+        setVideoProgress(0)
+      }
+
+      if (!isInteracting.current) {
+        setShowProgress(true)
+        autoplayPlugin.play()
+      }
+    }
+
     api
       .on("autoplay:timerset", handleTimerSet)
       .on("pointerDown", handleInteraction)
       .on("pointerUp", handleInteractionEnd)
+      .on("select", handleSelect)
 
-    if (showProgress) {
+    handleSelect()
+
+    if (api.selectedScrollSnap() !== 0 && showProgress) {
       startProgress(autoplayPlugin.timeUntilNext())
     }
 
@@ -88,8 +126,9 @@ export function HeroCarousel() {
         .off("autoplay:timerset", handleTimerSet)
         .off("pointerDown", handleInteraction)
         .off("pointerUp", handleInteractionEnd)
+        .off("select", handleSelect)
     }
-  }, [api, showProgress, startProgress])
+  }, [api, isVideoSlide, showProgress, startProgress])
 
   React.useEffect(() => {
     return () => {
@@ -111,6 +150,31 @@ export function HeroCarousel() {
         className="w-full"
       >
         <CarouselContent className="-ml-3 md:-ml-5">
+          <CarouselItem className="pl-3 md:pl-5">
+            <div className="relative aspect-[16/10] overflow-hidden rounded-4xl border bg-muted shadow-sm sm:aspect-[16/8]">
+              <video
+                ref={videoNode}
+                src="/hero.mp4"
+                autoPlay
+                muted
+                playsInline
+                preload="auto"
+                aria-label="The Sukoon Within community work"
+                className="h-full w-full object-cover"
+                onTimeUpdate={(event) => {
+                  const video = event.currentTarget
+                  setVideoProgress(
+                    video.duration ? video.currentTime / video.duration : 0
+                  )
+                }}
+                onEnded={() => {
+                  setVideoProgress(1)
+                  api?.scrollNext()
+                }}
+              />
+            </div>
+          </CarouselItem>
+
           {heroImages.map((image) => (
             <CarouselItem key={image.src} className="pl-3 md:pl-5">
               <div className="relative aspect-[16/10] overflow-hidden rounded-4xl border bg-muted shadow-sm sm:aspect-[16/8]">
@@ -134,7 +198,14 @@ export function HeroCarousel() {
       >
         <div
           ref={progressNode}
-          className="animate-autoplay-progress h-full origin-left rounded-full bg-primary"
+          className={
+            isVideoSlide
+              ? "h-full origin-left rounded-full bg-primary transition-transform duration-200 ease-linear"
+              : "animate-autoplay-progress h-full origin-left rounded-full bg-primary"
+          }
+          style={
+            isVideoSlide ? { transform: `scaleX(${videoProgress})` } : undefined
+          }
         />
       </div>
     </div>
