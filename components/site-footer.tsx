@@ -16,6 +16,17 @@ export function SiteFooter() {
           <p className="text-sm font-medium">
             No peace is better than the peace within.
           </p>
+          <p className="text-sm text-muted-foreground">
+            Website built by{" "}
+            <Link
+              href="https://arjuncodess.is-a.dev/"
+              target="_blank"
+              rel="noreferrer"
+              className="font-medium text-foreground underline-offset-4 hover:underline"
+            >
+              Arjun Vijay Prakash
+            </Link>
+          </p>
         </div>
         <div className="grid gap-6 sm:grid-cols-2">
           <div className="flex flex-col gap-3">
